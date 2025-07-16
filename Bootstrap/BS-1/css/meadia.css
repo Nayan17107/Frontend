@@ -1,0 +1,75 @@
+/* SM */
+
+
+@media(min-width:576px){
+
+/* HEADER */
+
+header nav{
+    background-color: rgba(33, 37, 41,);
+}
+
+/* OFFERS */
+
+.offers-item .col-6:first-child .offer-inner{
+    margin-bottom: 20px;
+}
+
+/* CAROUSEL */
+
+.carousel-item h1{
+    padding-top: 235px!important;
+}
+
+}
+
+
+/* MD */
+
+
+@media(min-width:768px){
+
+}
+
+
+/* LG */
+
+
+@media(min-width:992px){
+
+/* HEADER */
+
+header nav{
+    background-color: transparent;
+}
+
+/* CAROUSEL */
+
+.carousel-item h1{
+    padding-top: 200px!important;
+}
+
+/* OFFERS */
+
+.offers-item .col-6:first-child .offer-inner{
+    margin-bottom: 0px;
+}
+
+}
+
+
+/* XL */
+
+
+@media(min-width:1200px){
+
+
+}
+
+
+/* XXL */
+
+
+@media(min-width:1400px){
+
+}

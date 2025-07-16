@@ -1,0 +1,10 @@
+.car1{
+	background-image:url(../img/car2.webp), linear-gradient(red, yellow);
+	width:800px;
+	height:500px;
+	/* background-position:center; */
+	/* background-size:cover; */
+	/* background-repeat:no-repeat; */
+	/* background-position:fixed; */
+	background-blend-mode:hard-light;
+}

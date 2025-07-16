@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator UI</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f3f3f3;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .calculator {
+            display: grid;
+            grid-template-columns: repeat(4, 80px);
+            grid-template-rows: auto repeat(5, 80px);
+            gap: 5px;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .display {
+            grid-column: span 4;
+            height: 60px;
+            font-size: 28px;
+            text-align: right;
+            padding: 10px;
+            border: none;
+            background-color: #eaeaea;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        button {
+            font-size: 24px;
+            border: none;
+            background-color: #ffffff;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #eaeaea;
+        }
+
+        .operator {
+            background-color: #f9f9f9;
+            font-weight: bold;
+        }
+
+        .special {
+            background-color: #ffdcdc;
+            font-weight: bold;
+        }
+
+        .equal {
+            background-color: #186972;
+            color: white;
+            font-weight: bold;
+            grid-row: span 2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <input type="text" class="display" disabled />
+
+        <button class="special">C</button>
+        <button class="special">←</button>
+        <button class="operator">/</button>
+        <button class="operator">*</button>
+
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button class="operator">-</button>
+
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button class="operator">+</button>
+
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button class="equal" rowspan="2">=</button>
+
+        <button>00</button>
+        <button>0</button>
+        <button>.</button>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

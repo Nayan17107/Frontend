@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Jost'!important;
+}
+header .navbar-brand, .carousel-item h1, .offer-inner h4, .offer-inner p, .menu-title h2, .about-content h2, .contact-item h2, .review-title h2, .footer-item h3{
+    font-family: 'Dancing Script';
+}
+.offers, .abouts, .contacts{
+    padding: 80px 0;
+}
+
+/* HEADER */
+
+nav li:not(:last-child) a:hover{
+    color: #ffbe33!important;
+}
+nav li:last-child a:hover{
+    background-color: #dd9908!important;
+}
+
+/* CAROUSEL */
+
+.carousel:not(:last-child){
+    background-image: url(../img/carousel-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 700px;
+}
+.carousel-item a{
+    color: white;
+    background-color: #ffbe33;
+}
+.carousel-indicators{
+    left: 0!important;
+    right: 0!important;
+    display: inherit!important;
+    margin-left: 0!important;
+    position: inherit!important;
+    margin-top: 70px;
+}
+.carousel-indicators [data-bs-target]{
+    height: 15px!important;
+    width: 15px!important;
+    border-radius: 50%;
+}
+.carousel-indicators .active{
+    background-color: #ffbe33!important;
+    transform: scale(1.4);
+}
+
+/* OFFERS */
+
+.offer-inner:hover img{
+    transform: scale(1.1);
+    transition: all 0.6s;
+}
+
+/* MENUS */
+
+.menus{
+    margin-bottom: 80px;
+}
+.nav-pills .nav-link.active{
+    color: white!important;
+    background-color: black!important;
+}
+.menu-item{
+    border-radius: 12px;
+}
+.menu-item:hover img{
+    transform: scale(1.2);
+    transition: all 0.3s;
+}
+.menu-img{
+    background-color: white;
+    opacity: 0.9;
+    border-bottom-left-radius: 50px;
+}
+.menu-content ul li a{
+    color: white; 
+    background-color: #ffbe33;
+    padding: 10px 13px;
+    border-radius: 50%;
+}
+
+/* ABOUTS */
+
+.about-img{
+    margin-left: 50px;
+}
+
+/* REVIEWS */
+
+.reviews{
+    margin-bottom: 80px;
+}
+.review-img::before{
+    content: '';
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    background-color: #ffbe33;
+    transform: translateX(-50%) rotate(45deg);
+    z-index: -1;
+}
+.carousel-control-prev-icon, .carousel-control-next-icon{
+    display: block!important;
+}
+.carousel-control-next, .carousel-control-prev{
+    position: inherit!important;
+    display: inline-block!important;
+    width: inherit!important;
+    opacity: inherit!important;
+    padding: 8px 8px!important;
+    border-radius: 50%!important;
+    left: 48%!important;
+    transform: translateX(-48%)!important;
+}
+
+/* FOOTER */
+
+.footer-inner .col-md-4:nth-child(2) .footer-item ul a{
+    color: black;
+    background-color: white;
+    padding: 7px 10px;
+    border-radius: 50%;
+}
+.footer-item ul li:hover a{
+    color: #ffbe33!important;
+}

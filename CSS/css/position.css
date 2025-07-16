@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main{
+    width: 500px;
+    height: 500px;
+    background-color: #00008b;
+    overflow: scroll;
+}
+p{
+    width: 600px;
+    color: black;
+}

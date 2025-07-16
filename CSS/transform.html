@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transform</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        h1{
+            text-align:center;
+        }
+        .main{
+            margin: 40px;
+            perspective: 800px;
+        }
+        .box1{
+            height: 200px;
+            width: 200px;
+            background-color: cyan;
+            transform: rotatex(30deg) rotateY(20deg);
+        }
+        .box2{
+            height: 200px;
+            width: 200px;
+            background-color:blueviolet;
+            transform: scaleX(1.5) scaleY(1.0);
+        }
+        .box3{
+            height: 200px;
+            width: 200px;
+            background-color: chocolate;
+            transform: skewX(10deg) skewY(0deg);
+        }
+        .box4{
+            height: 200px;
+            width: 200px;
+            background-color: red;
+            transform: translateX(200px) translateY(90px);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Transform</h1>
+    <div class="main">
+        <h2>Rotate</h2>
+        <div class="box1"></div><br/><br/><br/><br/>
+        <h2>Scale</h2>
+        <div class="box2"></div><br/><br/><br/><br/>
+        <h2>Rotate</h2>
+        <div class="box3"></div><br/><br/><br/><br/>
+        <h2>Translate</h2>
+        <div class="box4"></div>
+    </div>
+    
+</body>
+</html>

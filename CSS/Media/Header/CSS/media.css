@@ -1,0 +1,53 @@
+/* XS */
+
+@media(min-width:576px){
+    .container{
+        max-width:540px;
+    }
+}
+
+/* SM */
+
+@media(min-width:768px){
+    .container{
+        max-width:720px;
+    }
+}
+
+/* MD */
+
+@media(min-width:992px){
+    .container{
+        max-width:960px;
+    }
+
+    /* HEADER */
+
+    .toggle{
+        display: none;
+    }
+    header nav{
+        position: static;
+        display: block;
+        background-color: transparent;
+    }
+    header nav ul{
+        display: flex;
+    }
+}
+
+/* LG */
+
+@media(min-width:1200px){
+    .container{
+        max-width:1140px;
+    }
+}
+
+/* Xl */
+
+@media(min-width:1400px){
+    .container{
+        max-width:1320px;
+    }
+}

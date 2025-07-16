@@ -1,0 +1,30 @@
+*{
+	box-sizing:border-box;
+	margin:0;
+	padding:0;`
+}
+.box{
+	height:500px;
+	width:500px;
+	background-color:skyblue;
+	/* padding-top:50px; */
+	/* padding-right:20px; */
+	/* padding-left:50px; */
+	/* padding-bottom :10px; */
+	padding:50px 20px 10px 50px;
+	/* margin-top:20px; */
+	/* margin-bottom:30px; */
+	/* margin-left:40px; */
+	/* margin-right:50px; */
+    margin:50px 20px 50px 10px;	
+	/* border-width:5px; */
+	/* border-style:solid; */
+	/* border-color:green; */
+	border:10px solid black;
+}
+.box2{
+	background-color:yellow;
+}
+.box3{
+	background-color:red;
+}

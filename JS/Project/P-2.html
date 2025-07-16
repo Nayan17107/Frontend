@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #6dd5ed, #2193b0);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 12px 15px;
+            font-size: 1rem;
+            border: 2px solid #2193b0;
+            border-radius: 8px;
+            outline: none;
+            margin-bottom: 20px;
+            transition: border 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #6dd5ed;
+        }
+
+        button {
+            background: #2193b0;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #186b8e;
+        }
+
+        #ans {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>String Length Counter</h1>
+        <input type="text" id="str" placeholder="Enter your string here..." />
+        <br>
+        <button id="convert">Count Length</button>
+        <p id="ans"></p>
+    </div>
+
+    <script src="p-2.js"></script>
+</body>
+
+</html>

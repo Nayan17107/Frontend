@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Before, After and Transition</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .main{
+            height: 500px;
+            width: 500px;
+            background-color: blueviolet;
+            position: relative;
+        }
+        .box1{
+            height: 200px;
+            width: 200px;
+            background-color: red;
+        }
+        /* .box1::before{
+            content: "Hi";
+            height: 100px;
+            width: 100px;
+            background-color: aqua;
+            position: absolute;
+            right: 0;
+            line-height: 100px;
+            text-align: center;
+            color: crimson;
+        } */
+        /* p::after{
+            content: "";
+            background-image: url(https://rukminim2.flixcart.com/image/750/900/kq8dua80/poster/c/k/3/small-poster-scenery-of-tiger-painting-3d-digital-print-original-imag4ac4mk4kp452.jpeg?q=20&crop=false);
+            height: 100px;
+            width: 100px;
+        } */
+         .box1:hover{
+            background-color: darkgreen;
+            color: white;
+        }
+         h1:focus{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <a href="javascript:void(0)">Nayan</a><br/><br/>
+   <div class="main">
+        <div class="box1">Hello World</div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore veniam delectus cumque necessitatibus a ea, in pariatur magnam voluptatem fuga vero nulla blanditiis facere harum repellat quae? Maxime, beatae excepturi?</p>
+   </div> 
+</body>
+</html>

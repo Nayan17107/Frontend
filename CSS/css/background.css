@@ -1,0 +1,35 @@
+h2{
+	background-color:green;
+	}
+.linear1{
+	width:200px;
+	height:200px;
+	background:linear-gradient(to left, yellow, red, blue);
+	}
+.linear2{
+	width:200px;
+	height:200px;
+	background:linear-gradient(yellow, red, blue);
+	}
+.gradient1{
+	width:200px;
+	height:200px;
+	background:radial-gradient(orange, red);
+	}
+.gradient2{
+	width:500px;
+	height:200px;
+	background:radial-gradient(circle, skyblue, red);
+	}
+.conic1{
+	width:500px;
+	height:200px;
+	background-image: conic-gradient(red, yellow, green);
+	}
+.conic2{
+	width:500px;
+	height:200px;
+	background-image: conic-gradient(red, yellow, green, red);
+	}
+				
+	

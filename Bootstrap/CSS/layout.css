@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.about-inner{
+    height: 200px;
+    background-color: red;
+}
+.abouts .col-12:nth-child(2) .about-inner{
+    background-color: blue;
+    height: 200px;
+}
+.abouts .col-12:nth-child(3) .about-inner{
+    background-color: yellow;
+    height: 200px;
+}
+.abouts .col-12:last-child .about-inner{
+    background-color: orange;
+    height: 200px;
+}
+.row > *{
+    padding: 0!important;
+}

@@ -1,0 +1,70 @@
+
+/* XXL */
+
+@media(max-width:1399px){
+    .container{
+    max-width:1140px;
+    margin:0 auto;
+    padding:0 15px;
+    }
+    body{
+        background-color: blue;
+    }
+    p{
+        color: brown;
+    }
+}
+
+/* XL */
+
+@media(max-width:1199px){
+    .container{
+        max-width:960px;
+        margin:0 auto;
+        padding:0 15px;
+    }
+    body{
+        background-color: yellow;
+    }
+    p{
+        color: orange;
+    }
+}
+
+/* LD */
+
+@media(max-width:991px){
+    .container{
+        max-width:720px;
+        margin:0 auto;
+        padding:0 15px;
+    }
+}
+
+/* MD */
+
+@media(max-width:767px){
+    .container{
+        max-width:540px;
+        margin:0 auto;
+        padding:0 15px;
+    }
+    body{
+        background-color: pink;
+    }
+    p{
+        color: red;
+    }
+
+}
+
+/* SM */
+
+@media(max-width:575px){
+    .container{
+        max-width:100%;
+        margin:0 auto;
+        padding:0 15px;
+    }
+
+}

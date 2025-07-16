@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.col-3{
+    background-color: black;
+    height: 200px;
+    width: 25%;
+}
+.boxs .col-3:nth-child(2){
+    background-color: yellow;
+}
+.boxs .col-3:nth-child(3){
+    background-color: green;
+}
+.boxs .col-3:last-child{
+    background-color: purple;
+}

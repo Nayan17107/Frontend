@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+::selection{
+    background-color: black;
+    color: white;
+}
+div .text{
+    color: yellowgreen;
+}
+div > h2::first-letter{
+    color: brown;
+    font-size: 40px;;
+}
+.text2::first-line{
+    color: aquamarine;
+}
+ul {
+    color: blue;
+    padding: 50px;
+}
+li:first-child{
+    color: blueviolet;
+    font-size: 30px;
+}
+li:last-child{
+    color: bisque;
+    font-size: 50px;
+}
+li:nth-child(3){
+    font-size: xx-large;
+    color: rgb(255, 0, 242);
+    font-family: monospace, Times, serif;
+}
