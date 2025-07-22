@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crypto API</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #00ffe7;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 10px rgba(0, 255, 231, 0.6);
+        }
+
+        div[align="center"] {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        select,
+        button {
+            padding: 10px 18px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        select {
+            background-color: #fff;
+            color: #000;
+            min-width: 200px;
+        }
+
+        button {
+            background-color: #00ffd5;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #00c6a8;
+        }
+
+        #Crypto-Details {
+            max-width: 600px;
+            margin: 0 auto;
+            margin-top: 50px;
+            padding: 40px 30px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(0, 255, 231, 0.05));
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #Crypto-Details:hover {
+            transform: scale(1.02);
+            box-shadow: 0 18px 60px rgba(0, 255, 231, 0.15);
+        }
+
+        #Crypto-Details h2 {
+            font-size: 2.2rem;
+            margin: 0;
+            color: #00ffe7;
+            font-weight: 600;
+            text-shadow: 1px 1px 8px rgba(0, 255, 231, 0.4);
+        }
+
+        #Crypto-Details img {
+            width: 85px;
+            height: 85px;
+            object-fit: contain;
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        #Crypto-Details h3 {
+            font-size: 1.05rem;
+            margin: 4px 0;
+            color: #e0e0e0;
+            font-weight: 400;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CRYPTO API</h1>
+
+    <div class="form-container">
+        <select id="selectcrypto">
+            <option value="">Select Crypto</option>
+            <option value="bitcoin">BTC</option>
+            <option value="usd-coin">USDC</option>
+            <option value="ripple">XRP</option>
+            <option value="litecoin">LTC</option>
+            <option value="ethereum">ETHEREUM</option>
+            <option value="solana">SOLANA</option>
+        </select>
+        <button id="searchcrypto">Search</button>
+    </div>
+
+    <div id="Crypto-Details" style="display: none;"></div>
+
+    <script>
+        let Search = document.querySelector("#searchcrypto");
+        let Details = document.querySelector("#Crypto-Details");
+
+        Search.addEventListener('click', async () => {
+            Details.style.display = "block";
+            let Names = document.querySelector("#selectcrypto").value;
+
+            let res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${Names}&order=market_cap_desc&per_page=10&page=1&sparkline=false`);
+            let data = await res.json();
+
+            Details.innerHTML = "";
+
+            data.forEach(Crypto => {
+                let card = document.createElement('div');
+                card.className = 'card';
+
+                let Name = document.createElement('h2');
+                let Img = document.createElement('img');
+                let Price = document.createElement('h3');
+                let Rank = document.createElement('h3');
+                let Mcap = document.createElement('h3');
+                let Pchange = document.createElement('h3');
+                let Pchangeinpr = document.createElement('h3');
+
+                Name.innerHTML = Crypto.name;
+                Img.setAttribute('src', Crypto.image);
+                Img.setAttribute('alt', Crypto.name);
+                Price.innerHTML = `Price :- ${Crypto.current_price} $`;
+                Rank.innerHTML = "Rank :- " + Crypto.market_cap_rank;
+                Mcap.innerHTML = `Market Cap :  $ ${Crypto.market_cap}+`;
+                Pchange.innerHTML = "Price Change in 24h : " + Crypto.price_change_24h;
+                Pchangeinpr.innerHTML = "Price Change in % for 24h : " + Crypto.price_change_percentage_24h;
+
+                card.append(Name, Img, Price, Rank, Mcap, Pchange, Pchangeinpr);
+                Details.appendChild(card);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

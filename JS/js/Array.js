@@ -30,7 +30,7 @@
 // n.shift();
 // console.log(n);
 
-// 5) spice => It can ADD And Remove The Data From The String 
+// 5) splice => It can ADD And Remove The Data From The String 
 
 // => For Removing Data
 
@@ -39,7 +39,7 @@
 
 // => For Adding Data
 
-// n.splice(2 , 2, 11,22)   // (2 = index number, 2 = delete the number of index after that 2 incex, 11,22 = add this new index)
+// n.splice(2, 2, 11,22)   // (2 = index number, 2 = delete the number of index after that 2 incex, 11,22 = add this new index)
 // console.log(n);
 
 // 6) includes => Data is exist or not in the index?
