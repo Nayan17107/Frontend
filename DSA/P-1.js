@@ -1,66 +1,90 @@
-// Q-1 -> Find Maximum Number
+// 1) Print The 2D Array 
 
-// let arr = [10,20,30,100,40,50];
-// let max = arr[0];
+// let arr = [
+//     [10,20,30],
+//     [40,50,60],
+//     [70,80,90]
+// ]
 
-// arr.forEach(num => {
-//     if (num > max) {
-//         max = num;
-//     }
-// });
-
-// console.log("Maximum number is:", max);
-
-
-// Q-2 -> Remove Duplicates elements of given Array
-
-// let arr = [1,2,3,5,5,4,7]
-// let ans = []
-
-// arr.forEach(num => {
-//     if(num.length == num.length){
-//         console.log(num);
-//     }else{
-//         ans.pop(num);
-//         console.log(ans);
-//     }
-// })
-
-
-// Q-3 -> Reverse The Given Array
-
-// let arr = [10,20,30,40,50]
-// let n = []
-
-// for(let i = arr.length -1; i >= 0; i--){
-//     n.push(arr[i])
+// console.log("Orignal Array");
+// for(let i = 0; i < arr.length; i++){
+//     console.log(arr[i]);
 // }
-// console.log(n);
+
+// console.log("Transpose Array");
+// for (let m = 0; m < arr.length; m++) {
+//     let Ans = [];
+//     for (let n = 0; n < arr.length; n++) {
+//         Ans.push(arr[n][m])
+//     }
+//     console.log(Ans);
+// }
+
+// Output -> 
+
+// Orignal Array
+// [ 10, 20, 30 ]
+// [ 40, 50, 60 ]
+// [ 70, 80, 90 ]
+
+// Transpose Array
+// [ 10, 40, 70 ]
+// [ 20, 50, 80 ]
+// [ 30, 60, 90 ]
 
 
-// Q-4 -> Concate the Given Array
+// 2) Array Descending order sorting using selection sort
 
-// let a = [1,2,3]
-// let b = [4,5,6]
-// let c = [7,8,9]
+// let arr = [30,50,10,40,20]
 
-// let ans = [...a,...b,...c]
+// for (let i = 0; i < arr.length; i++) {
+//     for (let j = i + 1; j < arr.length; j++) {
 
-// console.log(ans);
-
-
-// Q-5 -> Search Incert Position of Given Array
-
-// let nums = [1, 3, 5, 6];
-// let target = 4;
-
-// let searchInsert = (nums, target) => {
-//     for (let i = 0; i < nums.length; i++) {
-//         if (nums[i] >= target) {
-//             return i;
+//         if (arr[i] < arr[j]) {
+//             let n = arr[i];
+//             arr[i] = arr[j];
+//             arr[j] = n;
 //         }
 //     }
-//     return nums.length;
-// };
+// }
+// console.log("Array In Descending Order :-",arr);
 
-// console.log(searchInsert(nums, target));
+// Output -> 
+
+// Array In Descending Order :- [ 50, 40, 30, 20, 10 ]
+
+
+
+// 3) Array Ascending order sorting using Merge sort
+
+// let arr = [20, 35, 4, 6, 19, 75];
+
+// function Merge(arr) {
+//     if (arr.length <= 1) return arr;
+
+//     let mid = Math.floor(arr.length / 2);
+//     let left = arr.slice(0, mid);
+//     let right = arr.slice(mid);
+
+//     return merge(Merge(left), Merge(right));
+// }
+
+// console.log(Merge(arr));
+
+// function merge(left, right) {
+//     let result = [];
+
+//     while (left.length && right.length) {
+//         if (left[0] < right[0]) {
+//             result.push(left.shift());
+//         } else {
+//             result.push(right.shift());
+//         }
+//     }
+
+//     return [...result, ...left, ...right];
+// }
+
+// Output -> 
+
+// [ 4, 6, 19, 20, 35, 75 ]
