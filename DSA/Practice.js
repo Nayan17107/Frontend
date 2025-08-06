@@ -64,3 +64,16 @@
 // };
 
 // console.log(searchInsert(nums, target));
+
+
+// let str = "Prajapati Nayan"
+// let ans = 0;
+// str.toLowerCase();
+
+// for (let i = 0; i < str.length; i++) {
+//     if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u') {
+//         str.includes(i);
+//         ans++;
+//     }
+// }
+// console.log("Total Vowel Numbers :-",ans);
