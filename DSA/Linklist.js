@@ -81,5 +81,9 @@ singlylinklist.displayData();
 
 singlylinklist.removeData();
 singlylinklist.removeData();
+singlylinklist.removeData();
+singlylinklist.removeData();
+singlylinklist.removeData();
+singlylinklist.removeData();
 
 singlylinklist.displayData();
