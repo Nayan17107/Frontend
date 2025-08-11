@@ -139,18 +139,34 @@
 //         }
 //     }
 
-//     recerseData() {
-//         let previos = null;
-//         let curr = this.head;
+    // recerseData() {
+    //     let previos = null;
+    //     let curr = this.head;
 
-//         while (curr) {
-//             let next = curr.next;  
-//             curr.next = previos;      
-//             previos = curr;           
-//             curr = next;           
+    //     while (curr) {
+    //         let next = curr.next;  
+    //         curr.next = previos;      
+    //         previos = curr;           
+    //         curr = next;           
+    //     }
+
+    //     this.head = previos; 
+    // }
+
+//     revrse() {
+//         let current = this.head
+//         let arr = []
+
+//         while (current != null) {
+//             arr.push(current.data)
+//             current = current.next
 //         }
 
-//         this.head = previos; 
+//         this.head = null;
+
+//         for (let i = arr.length - 1; i >= 0; i--) {
+//             this.appendData(arr[i])
+//         }
 //     }
 // };
 
@@ -167,7 +183,7 @@
 // console.log("");
 // singlylinklist.displayData();
 
-// singlylinklist.recerseData();
+// singlylinklist.revrse();
 // console.log("");
 
 // console.log("Reversed List:");
