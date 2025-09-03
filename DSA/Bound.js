@@ -26,22 +26,22 @@
 // Upper Bound
 
 
-function upperBound(arr, target) {
-    let low = 0, high = arr.length;
+// function upperBound(arr, target) {
+//     let low = 0, high = arr.length;
 
-    while (low < high) {
-        let mid = Math.floor((low + high) / 2);
+//     while (low < high) {
+//         let mid = Math.floor((low + high) / 2);
 
-        if (arr[mid] <= target) {
-            low = mid + 1;
-        } else {
-            high = mid;
-        }
-    }
-    return low;
-}
+//         if (arr[mid] <= target) {
+//             low = mid + 1;
+//         } else {
+//             high = mid;
+//         }
+//     }
+//     return low;
+// }
 
-let arr = [1, 2, 4, 4, 4, 5, 7, 9];
-let target = 4;
+// let arr = [1, 2, 4, 4, 4, 5, 7, 9];
+// let target = 4;
 
-console.log("Upper Bound:", upperBound(arr, target));
+// console.log("Upper Bound:", upperBound(arr, target));
