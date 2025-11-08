@@ -2,7 +2,6 @@ let display = document.querySelector(".display");
 let Button = document.querySelectorAll("button");
 let string = "";
 
-
 function storenum(value) {
     string = string + value;
     display.value = string;
