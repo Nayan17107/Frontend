@@ -5,7 +5,9 @@ import Routing from './Component/Routing'
 import Daynamic from './Component/Dynamic'
 import UseRef from './Component/Fragment-Usr'
 import { Route, Routes } from 'react-router'
-import Usecallback from './Component/Hooks/Usecallback'
+// import Usecallback from './Component/Hooks/Usecallback'
+import CompA from './Component/Hooks/UseContext/CompA'
+import Counter from './Component/Hooks/UseReducer/Counter'
 
 function App() {
   // const [list] = useState(["Home", "Servise", "Blog", "About", "Contact", "Help"])
@@ -19,7 +21,9 @@ function App() {
 
       {/* <Routing/>
       <UseRef/> */}
-      <Usecallback/>
+      {/* <Usecallback/> */}
+      {/* <CompA/> */}
+      {/* <Counter/> */}
     </div>
   )
 }
