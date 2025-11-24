@@ -11,12 +11,12 @@ function App() {
         <Header />
 
         {/* Add your routes here */}
-        <Routes>
+        {/* <Routes> */}
           {/* <Route path="/" element={<Home />} /> */}
-        </Routes>
+        {/* </Routes> */}
 
         {/* <AddProductForm/> */}
-        <Footer/>
+        {/* <Footer/> */}
       </Router>
     </>
   )
