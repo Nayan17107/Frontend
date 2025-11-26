@@ -1,5 +1,5 @@
-import { Navbar, Nav, Form, FormControl, Container, Offcanvas } from "react-bootstrap";
-import { FaRegUser, FaRegHeart, FaShoppingBag, FaSearch, FaChevronRight } from "react-icons/fa";
+import { Navbar, Nav, Form, FormControl, Container, Offcanvas, Button, Badge } from "react-bootstrap";
+import { FaRegUser, FaRegHeart, FaShoppingBag, FaSearch, FaChevronRight, FaPlusCircle, FaBoxOpen } from "react-icons/fa";
 import Logo from "/img/myntra.webp";
 import offcanvas1 from "/img/offcanvas-1.webp";
 import offcanvas2 from "/img/offcanvas-2.png";
@@ -9,6 +9,7 @@ import "./Header.css";
 
 function Header() {
     const [show, setShow] = useState(false);
+    const [productsCount, setProductsCount] = useState(0);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -18,6 +19,11 @@ function Header() {
             if (window.innerWidth >= 992) setShow(false);
         };
         window.addEventListener("resize", onResize);
+        
+        // Get products count for badge
+        const products = JSON.parse(localStorage.getItem("products")) || [];
+        setProductsCount(products.length);
+        
         return () => window.removeEventListener("resize", onResize);
     }, []);
 
@@ -41,7 +47,7 @@ function Header() {
                     {/* ✅ Desktop Menu */}
                     <Navbar.Collapse id="desktop-nav">
                         <Nav className="me-auto ms-4 fw-semibold header-menu">
-                            <Nav.Link as={Link} to="/man">MEN</Nav.Link>
+                            <Nav.Link as={Link} to="/men">MEN</Nav.Link>
                             <Nav.Link as={Link} to="/women">WOMEN</Nav.Link>
                             <Nav.Link as={Link} to="/kids">KIDS</Nav.Link>
                             <Nav.Link as={Link} to="/">HOME</Nav.Link>
@@ -57,15 +63,22 @@ function Header() {
                             />
                         </Form>
 
-                        {/* ✅ ADD PRODUCT (kept) */}
+                        {/* ✅ Enhanced ADD PRODUCT Button */}
                         <Nav className="me-3">
-                            <Nav.Link
-                                as={Link}
-                                to="/addproduct"
-                                className="fw-semibold text-danger"
+                            <Link 
+                                to="/add-product" 
+                                className="add-product-btn-wrapper"
                             >
-                                ADD PRODUCT
-                            </Nav.Link>
+                                <Button className="add-product-btn">
+                                    <FaPlusCircle className="btn-icon" />
+                                    <span className="btn-text">Add Product</span>
+                                    {productsCount > 0 && (
+                                        <Badge className="product-count-badge" bg="success">
+                                            {productsCount}
+                                        </Badge>
+                                    )}
+                                </Button>
+                            </Link>
                         </Nav>
                     </Navbar.Collapse>
 
@@ -115,7 +128,7 @@ function Header() {
 
                     {/* Main links */}
                     <Nav className="flex-column px-3 py-3 fw-semibold off-nav">
-                        <Nav.Link as={Link} to="/man" onClick={handleClose} className="off-item">
+                        <Nav.Link as={Link} to="/men" onClick={handleClose} className="off-item">
                             MEN <FaChevronRight />
                         </Nav.Link>
                         <Nav.Link as={Link} to="/women" onClick={handleClose} className="off-item">
@@ -134,14 +147,30 @@ function Header() {
 
                     <hr className="m-0" />
 
-                    {/* ADD PRODUCT */}
+                    {/* Enhanced ADD PRODUCT Mobile */}
                     <Nav className="flex-column px-3 py-3 fw-semibold">
-                        <Nav.Link as={Link} to="/addproduct" onClick={handleClose} className="off-item text-danger">
-                            ADD PRODUCT <FaChevronRight />
-                        </Nav.Link>
+                        <Link 
+                            to="/add-product" 
+                            onClick={handleClose} 
+                            className="off-item add-product-mobile"
+                        >
+                            <div className="d-flex align-items-center justify-content-between">
+                                <div className="d-flex align-items-center">
+                                    <FaBoxOpen className="me-2 mobile-icon" />
+                                    <span>Add Product</span>
+                                </div>
+                                <div className="d-flex align-items-center">
+                                    {productsCount > 0 && (
+                                        <Badge className="mobile-badge" bg="success">
+                                            {productsCount}
+                                        </Badge>
+                                    )}
+                                    <FaChevronRight className="ms-2" />
+                                </div>
+                            </div>
+                        </Link>
                     </Nav>
 
-                    {/* Bottom banner */}
                     <img src={offcanvas2} alt="" className="w-100 mt-4" />
 
                 </Offcanvas.Body>
