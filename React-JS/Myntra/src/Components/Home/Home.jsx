@@ -29,6 +29,19 @@ export default function Home() {
         ]
     ];
 
+
+    const thirdSlider = [
+        [
+            { id: 2, src: "/img/Home/home-12.webp" },
+            { id: 3, src: "/img/Home/home-13.webp" },
+            { id: 4, src: "/img/Home/home-14.webp" },
+            { id: 5, src: "/img/Home/home-15.webp" },
+            { id: 6, src: "/img/Home/home-16.webp" },
+            { id: 7, src: "/img/Home/home-17.webp" }
+        ]
+    ];
+
+
     return (
         <div className="hero-wrapper w-full">
 
@@ -53,6 +66,7 @@ export default function Home() {
                     ))}
                 </Carousel>
             </div>
+
             <div className="second-slider-wrapper w-full mt-4">
 
                 <h3 className="section-title">RISING STARS</h3>
@@ -72,6 +86,26 @@ export default function Home() {
                             </div>
                         </Carousel.Item>
                     ))}
+                </Carousel>
+            </div>
+
+            <div className="second-slider-wrapper w-full mt-4">
+                <h3 className="section-title">LUXE GRAND REDUCTION DEALS</h3>
+
+                <Carousel indicators={false} controls={false} interval={2000} pause="hover">
+                    <Carousel.Item>
+                        <div className="third-slider-container">
+                            {thirdSlider[0].map((img) => (
+                                <div className="third-slide-box" key={img.id}>
+                                    <img
+                                        src={img.src}
+                                        alt={`third-${img.id}`}
+                                        className="third-slider-img"
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    </Carousel.Item>
                 </Carousel>
             </div>
         </div>

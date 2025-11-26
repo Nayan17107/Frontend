@@ -1,3 +1,4 @@
+/* HERO SECTION */
 .hero-wrapper {
     width: 100%;
 }
@@ -8,6 +9,7 @@
     display: block;
 }
 
+/* MAIN SLIDER */
 .slider-wrapper {
     width: 100%;
     max-width: 100%;
@@ -21,6 +23,7 @@
     object-fit: cover;
 }
 
+/* INDICATORS STYLE */
 .carousel-indicators [data-bs-target] {
     width: 10px;
     height: 10px;
@@ -34,14 +37,7 @@
     background-color: #acaaaa;
 }
 
-@media (max-width: 768px) {
-
-    .hero-img,
-    .slider-img {
-        border-radius: 0;
-    }
-}
-
+/* MOBILE INDICATORS */
 @media (max-width: 576px) {
     .carousel-indicators [data-bs-target] {
         width: 4px;
@@ -55,14 +51,17 @@
     }
 }
 
+/* SECTION TITLE */
 .section-title {
     color: #525050;
     font-size: 25px;
     font-weight: 700;
-    margin: 70px;
+    margin: 40px 0;
+    text-align: center;
     letter-spacing: 4px;
 }
 
+/* SECOND SLIDER (RISING STARS) */
 .multi-img-slide {
     display: flex;
     justify-content: space-between;
@@ -92,5 +91,57 @@
 @media (max-width: 400px) {
     .multi-slider-img {
         width: 100%;
+    }
+}
+
+/* THIRD SLIDER (LUXE GRAND REDUCTION DEALS) */
+.third-slider-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 8px;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.third-slide-box {
+    width: 100%;
+}
+
+.third-slider-img {
+    width: 100%;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+/* DESKTOP (default 6 images) */
+.third-slide-box {
+    flex: 0 0 calc(100% / 6);
+}
+
+/* LARGE TABLET (4 images) */
+@media (max-width: 1024px) {
+    .third-slide-box {
+        flex: 0 0 calc(100% / 4);
+    }
+}
+
+/* TABLET (3 images) */
+@media (max-width: 768px) {
+    .third-slide-box {
+        flex: 0 0 calc(100% / 3);
+    }
+}
+
+/* MOBILE (2 images) */
+@media (max-width: 500px) {
+    .third-slide-box {
+        flex: 0 0 calc(100% / 2);
+    }
+}
+
+/* SMALL MOBILE (1 image) */
+@media (max-width: 360px) {
+    .third-slide-box {
+        flex: 0 0 100%;
     }
 }
