@@ -1,101 +1,9 @@
-// import { useState, useEffect } from "react";
-// import { Row, Col, Card, Form, Button } from "react-bootstrap";
-// import Header from "../Header/Header";
-// import Footer from "../Footer/Footer";
-
-// const sizesList = ["S", "M", "L", "XL", "XXL"];
-// const colorOptions = ["Black", "White", "Red", "Blue", "Green", "Yellow", "Grey", "Pink", "Brown"];
-
-// export default function ProductList({ gender }) {
-//     const [products, setProducts] = useState([]);
-//     const [filters, setFilters] = useState({ priceMin: "", priceMax: "", color: "", size: "" });
-//     const [filteredProducts, setFilteredProducts] = useState([]);
-
-//     useEffect(() => {
-//         const allProducts = JSON.parse(localStorage.getItem("products")) || [];
-//         const genderProducts = allProducts.filter(p => p.gender === gender);
-//         setProducts(genderProducts);
-//         setFilteredProducts(genderProducts);
-//     }, [gender]);
-
-//     const handleFilterChange = (e) => {
-//         setFilters({ ...filters, [e.target.name]: e.target.value });
-//     };
-
-//     const applyFilters = () => {
-//         let result = [...products];
-
-//         if (filters.priceMin) result = result.filter(p => Number(p.price) >= Number(filters.priceMin));
-//         if (filters.priceMax) result = result.filter(p => Number(p.price) <= Number(filters.priceMax));
-//         if (filters.color) result = result.filter(p => p.color === filters.color);
-//         if (filters.size) result = result.filter(p => p.sizes.includes(filters.size));
-
-//         setFilteredProducts(result);
-//     };
-
-//     const clearFilters = () => {
-//         setFilters({ priceMin: "", priceMax: "", color: "", size: "" });
-//         setFilteredProducts(products);
-//     };
-
-//     return (<>
-//         <Header />
-//         <div className="container py-4">
-//             <h2 className="mb-4 text-capitalize">{gender} Products</h2>
-
-//             {/* Filters */}
-//             <Row className="mb-4 g-3">
-//                 <Col md={2}><Form.Control type="number" placeholder="Min Price" name="priceMin" value={filters.priceMin} onChange={handleFilterChange} /></Col>
-//                 <Col md={2}><Form.Control type="number" placeholder="Max Price" name="priceMax" value={filters.priceMax} onChange={handleFilterChange} /></Col>
-//                 <Col md={2}><Form.Select name="color" value={filters.color} onChange={handleFilterChange}><option value="">Color</option>{colorOptions.map((c, i) => <option key={i} value={c}>{c}</option>)}</Form.Select></Col>
-//                 <Col md={2}><Form.Select name="size" value={filters.size} onChange={handleFilterChange}><option value="">Size</option>{sizesList.map((s, i) => <option key={i} value={s}>{s}</option>)}</Form.Select></Col>
-//                 <Col md={2}><Button onClick={applyFilters} variant="primary">Apply</Button></Col>
-//                 <Col md={2}><Button onClick={clearFilters} variant="secondary">Clear</Button></Col>
-//             </Row>
-
-//             <Row className="g-4 product-list-container">
-//                 {filteredProducts.length ? filteredProducts.map((p, i) => (
-//                     <Col md={3} key={i}>
-//                         <Card className="product-card">
-
-//                             <Card.Img
-//                                 src={p.images[0]}
-//                                 className="product-img"
-//                             />
-
-//                             <Card.Body>
-
-//                                 <div className="rating">⭐ {p.rating || "4.1"} | {p.ratingCount || "10k"}</div>
-
-//                                 <div className="brand">{p.brand}</div>
-
-//                                 <div className="desc">{p.name}</div>
-
-//                                 <div className="price-box">
-//                                     <span className="sp">₹{p.price}</span>
-//                                     <span className="mrp">₹{p.originalPrice || p.price * 2}</span>
-//                                     <span className="off">{p.discount}% OFF</span>
-//                                 </div>
-
-//                             </Card.Body>
-//                         </Card>
-//                     </Col>
-//                 )) : (
-//                     <p>No products found!</p>
-//                 )}
-//             </Row>
-
-//         </div>
-//         <Footer />
-//     </>
-//     );
-// }
-
 import { useState, useEffect } from "react";
 import { Row, Col, Card, Form, Button } from "react-bootstrap";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import "./Productlist.css";
+import { useNavigate } from "react-router-dom";
 
 const sizesList = ["S", "M", "L", "XL", "XXL"];
 const colorOptions = ["Black", "White", "Red", "Blue", "Green", "Yellow", "Grey", "Pink", "Brown"];
@@ -111,6 +19,7 @@ export default function ProductList({ gender }) {
     });
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [brands, setBrands] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const allProducts = JSON.parse(localStorage.getItem("products")) || [];
@@ -250,9 +159,20 @@ export default function ProductList({ gender }) {
                     </div>
 
                     <Row className="g-4 product-grid">
-                        {filteredProducts.length ? filteredProducts.map((p, i) => (
-                            <Col md={4} key={i}>
-                                <Card className="product-card">
+                        {filteredProducts.length ? filteredProducts.map((p) => (
+                            <Col md={4} key={p.id}>
+                                <Card
+                                    className="product-card"
+                                    onClick={() => {
+                                        if (!p.id) {
+                                            console.error("❌ Product has no ID:", p);
+                                            alert("This product has no ID. Re-add it using Add Product Form.");
+                                            return;
+                                        }
+                                        navigate(`/product/${p.id}`);
+                                    }}
+                                    style={{ cursor: "pointer" }}
+                                >
                                     <div className="product-image-container">
                                         <Card.Img
                                             src={p.images[0]}
