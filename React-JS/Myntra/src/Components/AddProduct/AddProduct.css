@@ -69,7 +69,8 @@
     display: inline-block;
     width: 4px;
     height: 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #ff7700;
+    /* Simplified to match theme */
     margin-right: 10px;
     border-radius: 2px;
 }
@@ -89,8 +90,9 @@
 }
 
 .form-input:focus {
-    border-color: #667eea;
-    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    border-color: #ff7700;
+    /* Matched to theme */
+    box-shadow: 0 0 0 0.2rem rgba(255, 119, 0, 0.25);
 }
 
 .form-input:disabled {
@@ -117,13 +119,13 @@
 }
 
 .gender-option:hover {
-    border-color: #667eea;
-    background-color: #f8f9ff;
+    border-color: #ff7700;
+    background-color: #fff5eb;
 }
 
 .gender-option.selected {
-    border-color: #667eea;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: #ff7700;
+    background: linear-gradient(135deg, #ff7700 0%, #ca0d0d 100%);
     color: white;
 }
 
@@ -148,34 +150,28 @@
 }
 
 .size-option:hover {
-    border-color: #667eea;
+    border-color: #ff7700;
     transform: translateY(-2px);
 }
 
 .size-option.selected {
-    border-color: #667eea;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: #ff7700;
+    background: #ff7700;
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 8px rgba(255, 119, 0, 0.3);
 }
 
-/* Discount Display */
-.discount-input {
-    position: relative;
-}
-
+/* Discount Display - FIXED */
 .discount-badge {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+    display: inline-block;
     background: #28a745;
     color: white;
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
     font-size: 0.8rem;
     font-weight: 600;
+    margin-top: 0.5rem;
 }
 
 /* Image Management */
@@ -259,13 +255,13 @@
 }
 
 .submit-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #ff7700 0%, #ca0d0d 100%);
     border: none;
 }
 
-.submit-btn:hover:not(:disabled) {
+.submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 6px 15px rgba(255, 119, 0, 0.4);
 }
 
 .submit-btn:disabled {
