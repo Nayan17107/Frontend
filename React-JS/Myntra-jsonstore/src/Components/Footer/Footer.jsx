@@ -9,7 +9,7 @@ const footerData = {
         { title: 'EXPERIENCE MYNTRA APP ON MOBILE', items: [] }
     ],
     popularSearches: [
-        'Makeup','Dresses For Girls','T-Shirts','Sandals','Headphones','Babydolls','Blazers For Men','Handbags','Ladies Watches','Bags','Sport Shoes','Reebok Shoes','Puma Shoes','Boxers','Wallets','Tops','Earrings','Fastrack Watches','Kurtis','Nike','Smart Watches','Titan Watches','Designer Blouse','Gowns','Rings','Cricket Shoes','Forever 21','Eye Makeup','Photo Frames','Punjabi Suits','Bikini','Myntra Fashion Show','Lipstick','Saree','Watches','Dresses','Lehenga','Nike Shoes','Goggles','Bras','Suit','Chinos','Shoes','Adidas Shoes','Woodland Shoes','Jewellery','Designers Sarees'
+        'Makeup', 'Dresses For Girls', 'T-Shirts', 'Sandals', 'Headphones', 'Babydolls', 'Blazers For Men', 'Handbags', 'Ladies Watches', 'Bags', 'Sport Shoes', 'Reebok Shoes', 'Puma Shoes', 'Boxers', 'Wallets', 'Tops', 'Earrings', 'Fastrack Watches', 'Kurtis', 'Nike', 'Smart Watches', 'Titan Watches', 'Designer Blouse', 'Gowns', 'Rings', 'Cricket Shoes', 'Forever 21', 'Eye Makeup', 'Photo Frames', 'Punjabi Suits', 'Bikini', 'Myntra Fashion Show', 'Lipstick', 'Saree', 'Watches', 'Dresses', 'Lehenga', 'Nike Shoes', 'Goggles', 'Bras', 'Suit', 'Chinos', 'Shoes', 'Adidas Shoes', 'Woodland Shoes', 'Jewellery', 'Designers Sarees'
     ],
     address: {
         lines: [
@@ -32,12 +32,12 @@ export default function Footer() {
                 <div className="row mb-4">
                     {footerData.columns.map((col) => (
                         <div key={col.title} className="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                            <h5 className="fw-bold text-dark mb-3" style={{ fontSize: '12px', letterSpacing: '0.5px' }}>{col.title}</h5>
+                            <h5 className="fw-bold text-dark mb-3 footer-heading">{col.title}</h5>
                             {col.title === 'EXPERIENCE MYNTRA APP ON MOBILE' ? (
                                 <>
                                     <div className="d-flex gap-2 mb-3 flex-wrap">
-                                        <img src="./img/footer-1.png" alt="App Store" className="img-fluid" style={{ maxWidth: '115px', height: '42px' }} />
-                                        <img src="./img/footer-2.png" alt="Google Play" className="img-fluid" style={{ maxWidth: '120px', height: '42px' }} />
+                                        <img src="./img/footer-1.png" alt="App Store" className="footer-app-img" />
+                                        <img src="./img/footer-2.png" alt="Google Play" className="footer-app-img" />
                                     </div>
                                     <p className="small text-muted mb-0">Exciting Offers & Faster Checkout with the Myntra App</p>
                                 </>
@@ -53,12 +53,12 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className="bg-white border-top border-bottom py-4">
+            <div className="bg-light border-top border-bottom py-4">
                 <div className="container-lg">
-                    <h5 className="fw-bold text-dark mb-3" style={{ fontSize: '12px', letterSpacing: '0.5px' }}>POPULAR SEARCHES</h5>
+                    <h5 className="fw-bold text-dark mb-3 footer-heading">POPULAR SEARCHES</h5>
                     <div className="d-flex flex-wrap gap-2">
                         {footerData.popularSearches.map((term) => (
-                            <span key={term} className="popular-term small text-muted">{term}</span>
+                            <span key={term} className="small text-muted">{term}</span>
                         ))}
                     </div>
                 </div>
@@ -68,8 +68,8 @@ export default function Footer() {
                 <div className="container-lg">
                     <div className="row align-items-start">
                         <div className="col-md-8">
-                            <h6 className="fw-bold text-dark mb-3" style={{ fontSize: '13px' }}>Registered Office Address</h6>
-                            <address className="text-muted mb-0" style={{ fontStyle: 'normal', lineHeight: 1.8 }}>
+                            <h6 className="fw-bold text-dark mb-3">Registered Office Address</h6>
+                            <address className="text-muted mb-0 footer-address">
                                 {footerData.address.lines.map((line, idx) => (
                                     <span key={idx} className="d-block">{line}</span>
                                 ))}
@@ -78,7 +78,7 @@ export default function Footer() {
 
                         <div className="col-md-4 text-md-end mt-3 mt-md-0">
                             <p className="mb-1 text-muted">CIN: <span className="text-muted">{footerData.address.cin}</span></p>
-                            <p className="mb-0">Telephone: <a href={`tel:${footerData.address.phone.replace(/[^+0-9]/g, '')}`} className="text-primary fw-bold">{footerData.address.phone}</a></p>
+                            <p className="mb-0">Telephone: <a href={`tel:${footerData.address.phone}`} className="text-primary fw-bold">{footerData.address.phone}</a></p>
                         </div>
                     </div>
                 </div>

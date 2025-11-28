@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Form, Button, Row, Col, Card, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addProductAsync } from "../../Services/Actions/ProductActions";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import "./AddProduct.css";
-import generateUniqueId from "generate-unique-id";
 
 const subcategories = {
     men: ["T-Shirts", "Shirts", "Jeans", "Jackets", "Sweatshirts", "Track Pants", "Shorts"],
@@ -15,24 +16,27 @@ const subcategories = {
 const sizesList = ["S", "M", "L", "XL", "XXL"];
 const colorOptions = ["Black", "White", "Red", "Blue", "Green", "Yellow", "Grey", "Pink", "Brown"];
 
-export default function AddProductForm() {
-    const [product, setProduct] = useState({
-        name: "",
-        brand: "",
-        gender: "",
-        subcategory: "",
-        price: "",
-        mrp: "",
-        discount: 0,
-        description: "",
-        sizes: [],
-        color: "",
-        quantity: "",
-        images: []
-    });
+const initialProductState = {
+    name: "",
+    brand: "",
+    gender: "",
+    subcategory: "",
+    price: "",
+    mrp: "",
+    discount: 0,
+    description: "",
+    sizes: [],
+    color: "",
+    quantity: "",
+    images: []
+};
 
+export default function AddProductForm() {
+    const [product, setProduct] = useState(initialProductState);
     const [imgInput, setImgInput] = useState("");
     const [showAlert, setShowAlert] = useState(false);
+
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -50,7 +54,9 @@ export default function AddProductForm() {
     const handleSizeSelect = (size) => {
         setProduct((prev) => ({
             ...prev,
-            sizes: prev.sizes.includes(size) ? prev.sizes.filter((s) => s !== size) : [...prev.sizes, size]
+            sizes: prev.sizes.includes(size)
+                ? prev.sizes.filter((s) => s !== size)
+                : [...prev.sizes, size]
         }));
     };
 
@@ -68,25 +74,20 @@ export default function AddProductForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const products = JSON.parse(localStorage.getItem("products")) || [];
+        const productGender = product.gender;
+        dispatch(addProductAsync(product));
 
-        const newProduct = {
-            ...product,
-            id: generateUniqueId({
-                length: 8,
-                useLetters: true,
-                useNumbers: true
-            })
-        };
+        // Reset form
+        setProduct(initialProductState);
+        setImgInput("");
 
-        products.push(newProduct);
-
-        localStorage.setItem("products", JSON.stringify(products));
-
+        // Show success message
         setShowAlert(true);
         setTimeout(() => {
             setShowAlert(false);
-            if (newProduct.gender) navigate(`/${newProduct.gender}`);
+            if (productGender) {
+                navigate(`/${productGender}`);
+            }
         }, 2000);
     };
 

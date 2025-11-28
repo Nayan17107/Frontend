@@ -1,24 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductAsync } from "../Services/Actions/ProductActions";
 import Header from "../Components/Header/Header";
 import Footer from "../Components/Footer/Footer";
 import "./SingleProduct.css";
 
 export default function ProductDetails() {
     const { id } = useParams();
-    const [product, setProduct] = useState(null);
     const [selectedSize, setSelectedSize] = useState("");
     const [selectedImage, setSelectedImage] = useState(0);
 
-    useEffect(() => {
-        const products = JSON.parse(localStorage.getItem("products")) || [];
-        const foundProduct = products.find((p) => p.id === id);
-        setProduct(foundProduct);
+    const dispatch = useDispatch();
+    const { product, isLoading } = useSelector(state => state.products);
 
-        if (foundProduct && foundProduct.sizes && foundProduct.sizes.length > 0) {
-            setSelectedSize(foundProduct.sizes[0]);
+    useEffect(() => {
+        dispatch(getProductAsync(id));
+    }, [dispatch, id]);
+
+    useEffect(() => {
+        if (product && product.sizes && product.sizes.length > 0) {
+            setSelectedSize(product.sizes[0]);
         }
-    }, [id]);
+    }, [product]);
 
     const handleSizeSelect = (size) => {
         setSelectedSize(size);
@@ -29,13 +33,11 @@ export default function ProductDetails() {
             alert("Please select a size before adding to cart");
             return;
         }
-
         const cartItem = {
             ...product,
             selectedSize,
             quantity: 1
         };
-
         console.log("Added to cart:", cartItem);
         alert("Product added to cart successfully!");
     };
@@ -44,6 +46,16 @@ export default function ProductDetails() {
         console.log("Added to wishlist:", product);
         alert("Product added to wishlist!");
     };
+
+    if (isLoading) {
+        return (
+            <>
+                <Header />
+                <div className="loading">Loading...</div>
+                <Footer />
+            </>
+        );
+    }
 
     if (!product) {
         return (
@@ -57,6 +69,7 @@ export default function ProductDetails() {
             </>
         );
     }
+
 
     return (
         <>
