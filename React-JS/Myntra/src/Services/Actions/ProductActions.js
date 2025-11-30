@@ -81,7 +81,7 @@ export const updateProductAsync = (id, productData) => {
             const updatedProduct = {
                 ...products[productIndex],
                 ...productData,
-                id: id // Keep the same ID
+                id: id 
             };
             products[productIndex] = updatedProduct;
             localStorage.setItem('products', JSON.stringify(products));
