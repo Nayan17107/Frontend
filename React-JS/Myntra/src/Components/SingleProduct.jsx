@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductAsync } from "../Services/Actions/ProductActions";
+import { getProductAsync, deleteProductAsync } from "../Services/Actions/ProductActions";
 import Header from "../Components/Header/Header";
 import Footer from "../Components/Footer/Footer";
 import "./SingleProduct.css";
 
 export default function ProductDetails() {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [selectedSize, setSelectedSize] = useState("");
     const [selectedImage, setSelectedImage] = useState(0);
 
@@ -47,6 +48,18 @@ export default function ProductDetails() {
         alert("Product added to wishlist!");
     };
 
+    const handleEditProduct = () => {
+        navigate(`/edit-product/${id}`);
+    };
+
+    const handleDeleteProduct = () => {
+        if (window.confirm("Are you sure you want to delete this product? This action cannot be undone.")) {
+            dispatch(deleteProductAsync(product.id));
+            alert("Product deleted successfully!");
+            navigate("/products");
+        }
+    };
+
     if (isLoading) {
         return (
             <>
@@ -69,7 +82,6 @@ export default function ProductDetails() {
             </>
         );
     }
-
 
     return (
         <>
@@ -181,6 +193,19 @@ export default function ProductDetails() {
                         <button className="wishlist-btn" onClick={handleWishlist}>
                             ♡ WISHLIST
                         </button>
+                    </div>
+
+                    {/* Admin Actions */}
+                    <div className="admin-actions">
+                        <h5 className="admin-actions-title">Admin Actions</h5>
+                        <div className="admin-buttons">
+                            <button className="edit-product-btn" onClick={handleEditProduct}>
+                                ✏️ Edit Product
+                            </button>
+                            <button className="delete-product-btn" onClick={handleDeleteProduct}>
+                                🗑️ Delete Product
+                            </button>
+                        </div>
                     </div>
 
                     {/* Additional Information */}
