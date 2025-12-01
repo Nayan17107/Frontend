@@ -11,9 +11,10 @@ export default function ProductDetails() {
     const navigate = useNavigate();
     const [selectedSize, setSelectedSize] = useState("");
     const [selectedImage, setSelectedImage] = useState(0);
+    const [isDeleting, setIsDeleting] = useState(false);
 
     const dispatch = useDispatch();
-    const { product, isLoading } = useSelector(state => state.products);
+    const { product, isLoading, errorMsg } = useSelector(state => state.products);
 
     useEffect(() => {
         dispatch(getProductAsync(id));
@@ -52,11 +53,18 @@ export default function ProductDetails() {
         navigate(`/edit-product/${id}`);
     };
 
-    const handleDeleteProduct = () => {
+    const handleDeleteProduct = async () => {
         if (window.confirm("Are you sure you want to delete this product? This action cannot be undone.")) {
-            dispatch(deleteProductAsync(product.id));
-            alert("Product deleted successfully!");
-            navigate("/products");
+            setIsDeleting(true);
+            try {
+                await dispatch(deleteProductAsync(product.id));
+                alert("Product deleted successfully!");
+                navigate("/products");
+            } catch (error) {
+                alert("Failed to delete product. Please try again.");
+            } finally {
+                setIsDeleting(false);
+            }
         }
     };
 
@@ -65,6 +73,19 @@ export default function ProductDetails() {
             <>
                 <Header />
                 <div className="loading">Loading...</div>
+                <Footer />
+            </>
+        );
+    }
+
+    if (errorMsg) {
+        return (
+            <>
+                <Header />
+                <div className="error-message">
+                    <h2>❌ Error</h2>
+                    <p>{errorMsg}</p>
+                </div>
                 <Footer />
             </>
         );
@@ -199,11 +220,19 @@ export default function ProductDetails() {
                     <div className="admin-actions">
                         <h5 className="admin-actions-title">Admin Actions</h5>
                         <div className="admin-buttons">
-                            <button className="edit-product-btn" onClick={handleEditProduct}>
+                            <button
+                                className="edit-product-btn"
+                                onClick={handleEditProduct}
+                                disabled={isDeleting}
+                            >
                                 ✏️ Edit Product
                             </button>
-                            <button className="delete-product-btn" onClick={handleDeleteProduct}>
-                                🗑️ Delete Product
+                            <button
+                                className="delete-product-btn"
+                                onClick={handleDeleteProduct}
+                                disabled={isDeleting}
+                            >
+                                {isDeleting ? 'Deleting...' : '🗑️ Delete Product'}
                             </button>
                         </div>
                     </div>

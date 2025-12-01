@@ -582,3 +582,26 @@
         font-size: 13px;
     }
 }
+
+/* Add to SingleProduct.css */
+.error-message {
+    text-align: center;
+    margin: 100px 0;
+    font-size: 24px;
+    color: #dc3545;
+    padding: 40px;
+    background: #f8d7da;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 100px auto;
+}
+
+.admin-actions button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.admin-actions button:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}

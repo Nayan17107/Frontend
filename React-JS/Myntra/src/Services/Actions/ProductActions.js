@@ -6,6 +6,8 @@ export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 export const LOADING = 'LOADING';
 export const ERROR = 'ERROR';
 
+const API_URL = 'http://localhost:5000'; 
+
 export const getAllProducts = (products) => ({
     type: GET_ALL_PRODUCTS,
     payload: products
@@ -41,65 +43,109 @@ export const errorMsg = (msg) => ({
 });
 
 export const getAllProductsAsync = () => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(loading());
-        const products = JSON.parse(localStorage.getItem('products')) || [];
-        dispatch(getAllProducts(products));
+        try {
+            const response = await fetch(`${API_URL}/products`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch products');
+            }
+            const products = await response.json();
+            dispatch(getAllProducts(products));
+        } catch (error) {
+            dispatch(errorMsg(error.message));
+        }
     };
 };
 
 export const addProductAsync = (productData) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(loading());
-        const products = JSON.parse(localStorage.getItem('products')) || [];
-        const newProduct = {
-            ...productData,
-            id: generateUniqueId()
-        };
-        products.push(newProduct);
-        localStorage.setItem('products', JSON.stringify(products));
-        dispatch(addProduct(newProduct));
+        try {
+            const newProduct = {
+                ...productData,
+                id: generateUniqueId()
+            };
+
+            const response = await fetch(`${API_URL}/products`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newProduct)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add product');
+            }
+
+            const addedProduct = await response.json();
+            dispatch(addProduct(addedProduct));
+        } catch (error) {
+            dispatch(errorMsg(error.message));
+        }
     };
 };
 
 export const getProductAsync = (id) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(loading());
-        const products = JSON.parse(localStorage.getItem('products')) || [];
-        const product = products.find(p => p.id === id);
-        dispatch(getProduct(product));
+        try {
+            const response = await fetch(`${API_URL}/products/${id}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch product');
+            }
+            const product = await response.json();
+            dispatch(getProduct(product));
+        } catch (error) {
+            dispatch(errorMsg(error.message));
+        }
     };
 };
 
 export const updateProductAsync = (id, productData) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(loading());
-        const products = JSON.parse(localStorage.getItem('products')) || [];
-        const productIndex = products.findIndex(p => p.id === id);
+        try {
+            const response = await fetch(`${API_URL}/products/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(productData)
+            });
 
-        if (productIndex !== -1) {
-            const updatedProduct = {
-                ...products[productIndex],
-                ...productData,
-                id: id 
-            };
-            products[productIndex] = updatedProduct;
-            localStorage.setItem('products', JSON.stringify(products));
+            if (!response.ok) {
+                throw new Error('Failed to update product');
+            }
+
+            const updatedProduct = await response.json();
             dispatch(updateProduct(updatedProduct));
+        } catch (error) {
+            dispatch(errorMsg(error.message));
         }
     };
 };
 
 export const deleteProductAsync = (id) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(loading());
-        const products = JSON.parse(localStorage.getItem('products')) || [];
-        const filteredProducts = products.filter(p => p.id !== id);
-        localStorage.setItem('products', JSON.stringify(filteredProducts));
-        dispatch(deleteProduct(id));
+        try {
+            const response = await fetch(`${API_URL}/products/${id}`, {
+                method: 'DELETE'
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to delete product');
+            }
+
+            dispatch(deleteProduct(id));
+        } catch (error) {
+            dispatch(errorMsg(error.message));
+        }
     };
 };
 
 const generateUniqueId = () => {
-    return Math.random().toString(36).substr(2, 9);
+    return Date.now().toString(36) + Math.random().toString(36).substr(2);
 };
