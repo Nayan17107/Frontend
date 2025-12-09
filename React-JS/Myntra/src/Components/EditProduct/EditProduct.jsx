@@ -1,4 +1,3 @@
-// Components/EditProductForm/EditProductForm.js
 import { useState, useEffect } from "react";
 import { Form, Button, Row, Col, Card, Alert } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
@@ -7,6 +6,7 @@ import { getProductAsync, updateProductAsync } from "../../Services/Actions/Prod
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import "./EditProduct.css";
+import { uploadFile } from "../../Services/UploadImg";
 
 const subcategories = {
     men: ["T-Shirts", "Shirts", "Jeans", "Jackets", "Sweatshirts", "Track Pants", "Shorts"],
@@ -33,7 +33,6 @@ export default function EditProductForm() {
         quantity: "",
         images: []
     });
-    const [imgInput, setImgInput] = useState("");
     const [showAlert, setShowAlert] = useState(false);
 
     const dispatch = useDispatch();
@@ -84,11 +83,23 @@ export default function EditProductForm() {
         }));
     };
 
-    const addImage = () => {
-        if (imgInput.trim() !== "") {
-            setProduct((prev) => ({ ...prev, images: [...prev.images, imgInput] }));
-            setImgInput("");
+    const handleImageUpload = async (e) => {
+        const files = e.target.files;
+        if (!files || files.length === 0) return;
+
+        for (let file of files) {
+            try {
+                let url = await uploadFile(file);
+                setProduct(prev => ({
+                    ...prev,
+                    images: [...prev.images, url]
+                }));
+            } catch (error) {
+                alert(`Failed to upload ${file.name}`);
+            }
         }
+
+        e.target.value = null;
     };
 
     const removeImage = (idx) => {
@@ -98,9 +109,27 @@ export default function EditProductForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        dispatch(updateProductAsync(id, product));
+        const completeProductData = {
+            name: product.name || "",
+            brand: product.brand || "",
+            gender: product.gender || "",
+            subcategory: product.subcategory || "",
+            price: product.price || "",
+            mrp: product.mrp || "",
+            discount: product.discount || 0,
+            description: product.description || "",
+            sizes: product.sizes || [],
+            color: product.color || "",
+            quantity: product.quantity || "",
+            images: product.images || [], 
+            updatedAt: new Date().toISOString()
+        };
 
-        // Show success message
+        console.log("🚀 SUBMITTING TO FIREBASE:", completeProductData);
+        console.log("📸 IMAGES INCLUDED:", completeProductData.images);
+
+        dispatch(updateProductAsync(id, completeProductData));
+
         setShowAlert(true);
         setTimeout(() => {
             setShowAlert(false);
@@ -321,42 +350,47 @@ export default function EditProductForm() {
                                 </Form.Group>
                             </div>
 
-                            {/* Images Section */}
+                            {/* Upload img */}
                             <div className="form-section">
                                 <h4 className="section-title">Product Images</h4>
-                                <Form.Group className="mb-4">
-                                    <Form.Label className="form-label">Add Image URLs *</Form.Label>
-                                    <div className="image-input-container">
+
+                                <Form.Group as={Row} className="mb-4">
+                                    <Form.Label column sm="2" className="form-label">
+                                        Upload Images *
+                                    </Form.Label>
+                                    <Col sm="10">
                                         <Form.Control
-                                            type="text"
-                                            placeholder="Paste image URL"
-                                            value={imgInput}
-                                            onChange={(e) => setImgInput(e.target.value)}
+                                            type="file"
+                                            multiple
+                                            onChange={handleImageUpload}
                                             className="form-input"
                                         />
-                                        <Button variant="primary" onClick={addImage} className="add-image-btn">
-                                            Add Image
-                                        </Button>
-                                    </div>
-
-                                    <div className="image-previews">
-                                        {product.images.map((img, i) => (
-                                            <div key={i} className="image-preview">
-                                                <img src={img} alt={`Preview ${i + 1}`} />
-                                                <Button
-                                                    variant="danger"
-                                                    className="remove-image-btn"
-                                                    onClick={() => removeImage(i)}
-                                                >
-                                                    ×
-                                                </Button>
-                                            </div>
-                                        ))}
-                                    </div>
-                                    {product.images.length === 0 && (
-                                        <div className="no-images">No images added yet</div>
-                                    )}
+                                        <small className="text-muted">
+                                            Select multiple images to upload
+                                        </small>
+                                    </Col>
                                 </Form.Group>
+
+                                <div className="image-previews">
+                                    {product.images.map((img, i) => (
+                                        <div key={i} className="image-preview">
+                                            <img src={img} alt={`Preview ${i + 1}`} />
+                                            <Button
+                                                variant="danger"
+                                                className="remove-image-btn"
+                                                onClick={() => removeImage(i)}
+                                            >
+                                                ×
+                                            </Button>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {product.images.length === 0 && (
+                                    <div className="no-images text-center py-3">
+                                        No images uploaded yet
+                                    </div>
+                                )}
                             </div>
 
                             <div className="form-actions">

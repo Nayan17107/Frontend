@@ -6,6 +6,7 @@ import { addProductAsync } from "../../Services/Actions/ProductActions";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import "./AddProduct.css";
+import { uploadFile } from "../../Services/UploadImg";
 
 const subcategories = {
     men: ["T-Shirts", "Shirts", "Jeans", "Jackets", "Sweatshirts", "Track Pants", "Shorts"],
@@ -60,15 +61,30 @@ export default function AddProductForm() {
         }));
     };
 
-    const addImage = () => {
-        if (imgInput.trim() !== "") {
-            setProduct((prev) => ({ ...prev, images: [...prev.images, imgInput] }));
-            setImgInput("");
+    const handleImageUpload = async (e) => {
+        const files = e.target.files;
+        if (!files || files.length === 0) return;
+
+        for (let file of files) {
+            try {
+                let url = await uploadFile(file);
+                setProduct(prev => ({
+                    ...prev,
+                    images: [...prev.images, url]
+                }));
+            } catch (error) {
+                alert(`Failed to upload ${file.name}`);
+            }
         }
+
+        e.target.value = null;
     };
 
     const removeImage = (idx) => {
-        setProduct((prev) => ({ ...prev, images: prev.images.filter((_, i) => i !== idx) }));
+        setProduct(prev => ({
+            ...prev,
+            images: prev.images.filter((_, i) => i !== idx)
+        }));
     };
 
     const handleSubmit = (e) => {
@@ -77,11 +93,9 @@ export default function AddProductForm() {
         const productGender = product.gender;
         dispatch(addProductAsync(product));
 
-        // Reset form
         setProduct(initialProductState);
         setImgInput("");
 
-        // Show success message
         setShowAlert(true);
         setTimeout(() => {
             setShowAlert(false);
@@ -295,42 +309,44 @@ export default function AddProductForm() {
                                 </Form.Group>
                             </div>
 
-                            {/* Images Section */}
+                            {/* Upload Img */}
                             <div className="form-section">
                                 <h4 className="section-title">Product Images</h4>
-                                <Form.Group className="mb-4">
-                                    <Form.Label className="form-label">Add Image URLs *</Form.Label>
-                                    <div className="image-input-container">
-                                        <Form.Control
-                                            type="text"
-                                            placeholder="Paste image URL"
-                                            value={imgInput}
-                                            onChange={(e) => setImgInput(e.target.value)}
-                                            className="form-input"
-                                        />
-                                        <Button variant="primary" onClick={addImage} className="add-image-btn">
-                                            Add Image
-                                        </Button>
-                                    </div>
 
-                                    <div className="image-previews">
-                                        {product.images.map((img, i) => (
-                                            <div key={i} className="image-preview">
-                                                <img src={img} alt={`Preview ${i + 1}`} />
-                                                <Button
-                                                    variant="danger"
-                                                    className="remove-image-btn"
-                                                    onClick={() => removeImage(i)}
-                                                >
-                                                    ×
-                                                </Button>
-                                            </div>
-                                        ))}
-                                    </div>
-                                    {product.images.length === 0 && (
-                                        <div className="no-images">No images added yet</div>
-                                    )}
+                                <Form.Group as={Row} className="mb-4">
+                                    <Form.Label column sm="2" className="form-label">
+                                        Upload Images *
+                                    </Form.Label>
+                                    <Col sm="10">
+                                        <Form.Control
+                                            type="file"
+                                            multiple
+                                            onChange={handleImageUpload}
+                                        />
+                                    </Col>
                                 </Form.Group>
+
+                                {/* Image Previews */}
+                                <div className="image-previews">
+                                    {product.images.map((img, i) => (
+                                        <div key={i} className="image-preview">
+                                            <img src={img} alt={`Preview ${i + 1}`} />
+                                            <Button
+                                                variant="danger"
+                                                className="remove-image-btn"
+                                                onClick={() => removeImage(i)}
+                                            >
+                                                ×
+                                            </Button>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {product.images.length === 0 && (
+                                    <div className="text-muted text-center py-3">
+                                        No images uploaded yet
+                                    </div>
+                                )}
                             </div>
 
                             <div className="form-actions">
@@ -354,7 +370,7 @@ export default function AddProductForm() {
                         </Form>
                     </Card.Body>
                 </Card>
-            </div>
+            </div >
             <Footer />
         </>
     );
