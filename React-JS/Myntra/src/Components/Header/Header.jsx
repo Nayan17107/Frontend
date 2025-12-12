@@ -48,7 +48,7 @@ function Header() {
                     />
 
                     {/* ✅ Desktop Menu */}
-                    <Navbar.Collapse id="desktop-nav">
+                    <Navbar.Collapse id="desktop-nav" className="d-sm-none">
                         <Nav className="me-auto ms-4 fw-semibold header-menu">
                             <Nav.Link as={Link} to="/men">MEN</Nav.Link>
                             <Nav.Link as={Link} to="/women">WOMEN</Nav.Link>
@@ -57,7 +57,6 @@ function Header() {
                             <Nav.Link as={Link} to="/">BEAUTY</Nav.Link>
                         </Nav>
 
-                        {/* ✅ Search */}
                         <Form className="d-flex align-items-center me-4 header-search-box">
                             <FaSearch className="search-icon" />
                             <FormControl
@@ -66,7 +65,6 @@ function Header() {
                             />
                         </Form>
 
-                        {/* ✅ Enhanced ADD PRODUCT Button */}
                         {isAuthenticated && (<Nav className="me-3">
                             <Link
                                 to="/add-product"
@@ -200,7 +198,6 @@ function Header() {
                 className="header-offcanvas"
                 show={show}
                 onHide={handleClose}
-                placement="start"
             >
                 <Offcanvas.Header closeButton>
 
@@ -215,7 +212,6 @@ function Header() {
 
                     {/* Banner */}
                     <img src={offcanvas1} alt="" className="w-100" />
-
                     {/* Main links */}
                     <Nav className="flex-column px-3 py-3 fw-semibold off-nav">
                         <Nav.Link as={Link} to="/men" onClick={handleClose} className="off-item">
@@ -235,7 +231,91 @@ function Header() {
                         </Nav.Link>
                     </Nav>
 
-                    <hr className="m-0" />
+                    {/* Mobile Auth Section - Separated for better alignment */}
+                    <div className="px-3 py-3 border-top">
+                        {isAuthenticated ? (
+                            // Logged in user mobile menu
+                            <div className="d-flex align-items-center mb-3">
+                                {user?.photoURL ? (
+                                    <img
+                                        src={user.photoURL}
+                                        alt="Profile"
+                                        className="rounded-circle me-3"
+                                        style={{ width: '40px', height: '40px', objectFit: 'cover' }}
+                                        referrerPolicy="no-referrer"
+                                    />
+                                ) : (
+                                    <div className="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3"
+                                        style={{ width: '40px', height: '40px' }}>
+                                        <FaUser />
+                                    </div>
+                                )}
+                                <div>
+                                    <div className="fw-bold text-dark">{user?.name || 'User'}</div>
+                                    <div className="small text-muted">{user?.email || ''}</div>
+                                </div>
+                            </div>
+                        ) : (
+                            // Not logged in - Show login/register buttons
+                            <div className="mb-3">
+                                <div className="d-grid gap-2">
+                                    <Link
+                                        to="/login"
+                                        onClick={handleClose}
+                                        className="btn btn-primary fw-bold"
+                                        style={{ borderRadius: '8px' }}
+                                    >
+                                        <FaUser className="me-2" /> Login
+                                    </Link>
+                                    <Link
+                                        to="/register"
+                                        onClick={handleClose}
+                                        className="btn btn-outline-dark fw-bold"
+                                        style={{ borderRadius: '8px' }}
+                                    >
+                                        Create Account
+                                    </Link>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Logged in user options */}
+                        {isAuthenticated && (
+                            <div className="mt-3">
+                                <Link
+                                    to="/profile"
+                                    onClick={handleClose}
+                                    className="d-block py-2 text-decoration-none text-dark"
+                                >
+                                    <FaUser className="me-2" /> My Profile
+                                </Link>
+                                <Link
+                                    to="/orders"
+                                    onClick={handleClose}
+                                    className="d-block py-2 text-decoration-none text-dark"
+                                >
+                                    <FaShoppingBag className="me-2" /> My Orders
+                                </Link>
+                                <Link
+                                    to="/wishlist"
+                                    onClick={handleClose}
+                                    className="d-block py-2 text-decoration-none text-dark"
+                                >
+                                    <FaRegHeart className="me-2" /> Wishlist
+                                </Link>
+                                <button
+                                    onClick={() => {
+                                        dispatch(signOutAsync());
+                                        handleClose();
+                                    }}
+                                    className="d-block py-2 text-danger border-0 bg-transparent text-start w-100"
+                                    style={{ paddingLeft: '0' }}
+                                >
+                                    <FaSignOutAlt className="me-2" /> Logout
+                                </button>
+                            </div>
+                        )}
+                    </div>
 
                     {/* Enhanced ADD PRODUCT Mobile */}
                     {isAuthenticated && (<Nav className="flex-column px-3 py-3 fw-semibold">

@@ -146,8 +146,23 @@
     border: 2px solid white;
 }
 
-.header-offcanvas {
-    width: 75% !important;
+/* Mobile Offcanvas Fix */
+@media (max-width: 991.98px) {
+    .header-offcanvas {
+        width: 100% !important;
+        height: auto !important;
+        max-height: 85vh !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+    }
+}
+
+/* Desktop Side Menu */
+@media (min-width: 992px) {
+    .header-offcanvas {
+        width: 320px !important;
+    }
 }
 
 .off-nav .off-item {
@@ -438,3 +453,88 @@
 .myntra-menu-item:hover .myntra-user-avatar-img {
     background: #ff3f6c15;
 }
+
+.off-item.text-primary {
+    color: #ff3f6c !important;
+    font-weight: 600;
+}
+
+.off-item.text-primary:hover {
+    color: #e63956 !important;
+}
+
+/* Mobile logout button */
+.off-item.text-danger {
+    color: #d32f2f !important;
+}
+
+.off-item.text-danger:hover {
+    color: #b71c1c !important;
+    background: #ffe6e6 !important;
+}
+
+/* Mobile user info section */
+.mobile-user-info {
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin: 12px 0;
+}
+
+.mobile-user-name {
+    font-weight: 700;
+    font-size: 16px;
+    color: #282c3f;
+}
+
+.mobile-user-email {
+    font-size: 13px;
+    color: #686b78;
+    margin-top: 4px;
+}
+
+.off-nav .off-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+    color: #282c3f;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.off-item:hover {
+    color: #ff3f6c !important;
+}
+
+/* Mobile Auth Section */
+.offcanvas-body .border-top {
+    border-top: 1px solid #eaeaea !important;
+}
+
+/* Mobile button styling */
+.offcanvas-body .btn {
+    padding: 12px;
+    font-size: 15px;
+}
+
+/* Mobile user links */
+.offcanvas-body a.d-block {
+    border-bottom: 1px solid #f5f5f5;
+    transition: all 0.2s ease;
+}
+
+.offcanvas-body a.d-block:hover {
+    color: #ff3f6c !important;
+    background: #f8f9fa;
+    padding-left: 8px !important;
+}
+
+/* Proper spacing */
+.offcanvas-body .px-3 {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+}
+
