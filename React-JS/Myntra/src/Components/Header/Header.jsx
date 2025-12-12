@@ -1,10 +1,12 @@
-import { Navbar, Nav, Form, FormControl, Container, Offcanvas, Button, Badge } from "react-bootstrap";
-import { FaRegUser, FaRegHeart, FaShoppingBag, FaSearch, FaChevronRight, FaPlusCircle, FaBoxOpen } from "react-icons/fa";
+import { Navbar, Nav, Form, FormControl, Container, Offcanvas, Button, Badge, Dropdown } from "react-bootstrap";
 import Logo from "/img/myntra.webp";
 import offcanvas1 from "/img/offcanvas-1.webp";
 import offcanvas2 from "/img/offcanvas-2.png";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { FaUser, FaSignOutAlt, FaRegHeart, FaShoppingBag, FaSearch, FaChevronRight, FaPlusCircle, FaBoxOpen } from 'react-icons/fa';
+import { signOutAsync } from '../../Services/Actions/UserAuthActions';
 import "./Header.css";
 
 function Header() {
@@ -13,16 +15,18 @@ function Header() {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const dispatch = useDispatch();
+    const { isAuthenticated, user } = useSelector(state => state.auth);
 
     useEffect(() => {
         const onResize = () => {
             if (window.innerWidth >= 992) setShow(false);
         };
         window.addEventListener("resize", onResize);
-        
+
         const products = JSON.parse(localStorage.getItem("products")) || [];
         setProductsCount(products.length);
-        
+
         return () => window.removeEventListener("resize", onResize);
     }, []);
 
@@ -63,9 +67,9 @@ function Header() {
                         </Form>
 
                         {/* ✅ Enhanced ADD PRODUCT Button */}
-                        <Nav className="me-3">
-                            <Link 
-                                to="/add-product" 
+                        {isAuthenticated && (<Nav className="me-3">
+                            <Link
+                                to="/add-product"
                                 className="add-product-btn-wrapper"
                             >
                                 <Button className="add-product-btn">
@@ -78,16 +82,104 @@ function Header() {
                                     )}
                                 </Button>
                             </Link>
-                        </Nav>
+                        </Nav>)}
                     </Navbar.Collapse>
 
                     {/* ✅ Desktop Right Icons */}
                     <div className="d-none d-lg-flex header-icons">
 
-                        <Link className="icon-item mx-3">
-                            <FaRegUser />
-                            <small>Profile</small>
-                        </Link>
+                        {/* AUTH SECTION */}
+                        {isAuthenticated ? (
+                            <div className="myntra-dropdown-wrapper">
+                                <Dropdown align="end">
+                                    <Dropdown.Toggle
+                                        variant="link"
+                                        className="myntra-profile-toggle icon-item mx-3 p-0 border-0 bg-transparent"
+                                    >
+                                        <FaUser />
+                                        <small>Profile</small>
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu className="myntra-dropdown-menu">
+                                        {/* User Header with Profile Picture */}
+                                        <div className="myntra-user-header">
+                                            {user?.photoURL ? (
+                                                <img
+                                                    src={user.photoURL}
+                                                    alt="Profile"
+                                                    className="myntra-user-avatar-img"
+                                                    referrerPolicy="no-referrer"
+                                                />
+                                            ) : (
+                                                <div className="myntra-user-avatar">
+                                                    <FaUser />
+                                                </div>
+                                            )}
+                                            <div>
+                                                <div className="myntra-user-name">{user?.name || 'User'}</div>
+                                                <div className="myntra-user-email">{user?.email || ''}</div>
+                                            </div>
+                                        </div>
+
+                                        <div className="myntra-menu-divider"></div>
+
+                                        {/* Menu Items */}
+                                        <div className="myntra-menu-items">
+                                            <Dropdown.Item as={Link} to="/profile" className="myntra-menu-item">
+                                                <div className="myntra-menu-icon">
+                                                    <FaUser />
+                                                </div>
+                                                <div className="myntra-menu-content">
+                                                    <div className="myntra-menu-title">My Profile</div>
+                                                    <div className="myntra-menu-sub">View & edit profile</div>
+                                                </div>
+                                            </Dropdown.Item>
+
+                                            <Dropdown.Item as={Link} to="/orders" className="myntra-menu-item">
+                                                <div className="myntra-menu-icon">
+                                                    <FaShoppingBag />
+                                                </div>
+                                                <div className="myntra-menu-content">
+                                                    <div className="myntra-menu-title">My Orders</div>
+                                                    <div className="myntra-menu-sub">Track & view orders</div>
+                                                </div>
+                                            </Dropdown.Item>
+
+                                            <Dropdown.Item as={Link} to="/wishlist" className="myntra-menu-item">
+                                                <div className="myntra-menu-icon">
+                                                    <FaRegHeart />
+                                                </div>
+                                                <div className="myntra-menu-content">
+                                                    <div className="myntra-menu-title">Wishlist</div>
+                                                    <div className="myntra-menu-sub">Saved items</div>
+                                                </div>
+                                            </Dropdown.Item>
+                                        </div>
+
+                                        <div className="myntra-menu-divider"></div>
+
+                                        {/* Logout */}
+                                        <Dropdown.Item
+                                            className="myntra-menu-item myntra-logout-item"
+                                            onClick={() => dispatch(signOutAsync())}
+                                        >
+                                            <div className="myntra-menu-icon">
+                                                <FaSignOutAlt />
+                                            </div>
+                                            <div className="myntra-menu-content">
+                                                <div className="myntra-menu-title">Logout</div>
+                                                <div className="myntra-menu-sub">Sign out of account</div>
+                                            </div>
+                                        </Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </div>
+                        ) : (
+                            <Link to="/login" className="icon-item mx-3">
+                                <FaUser />
+                                <small>Login</small>
+                            </Link>
+                        )}
 
                         <Link className="icon-item mx-3">
                             <FaRegHeart />
@@ -100,7 +192,6 @@ function Header() {
                         </Link>
 
                     </div>
-
                 </Container>
             </Navbar>
 
@@ -147,10 +238,10 @@ function Header() {
                     <hr className="m-0" />
 
                     {/* Enhanced ADD PRODUCT Mobile */}
-                    <Nav className="flex-column px-3 py-3 fw-semibold">
-                        <Link 
-                            to="/add-product" 
-                            onClick={handleClose} 
+                    {isAuthenticated && (<Nav className="flex-column px-3 py-3 fw-semibold">
+                        <Link
+                            to="/add-product"
+                            onClick={handleClose}
                             className="off-item add-product-mobile"
                         >
                             <div className="d-flex align-items-center justify-content-between">
@@ -168,7 +259,7 @@ function Header() {
                                 </div>
                             </div>
                         </Link>
-                    </Nav>
+                    </Nav>)}
 
                     <img src={offcanvas2} alt="" className="w-100 mt-4" />
 

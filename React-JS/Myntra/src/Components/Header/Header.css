@@ -184,3 +184,257 @@
         font-size: 18px;
     }
 }
+
+/* Fix for Dropdown Toggle */
+.dropdown-toggle.icon-item {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    color: #282c3f !important;
+    text-decoration: none !important;
+}
+
+.dropdown-toggle.icon-item:hover {
+    color: #ff3f6c !important;
+}
+
+.dropdown-toggle.icon-item::after {
+    display: none !important;
+    /* Hide Bootstrap's default arrow */
+}
+
+/* Fix icon alignment */
+.icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #282c3f;
+    font-size: 13px;
+}
+
+.icon-item small {
+    margin-top: 2px;
+}
+
+/* Dropdown menu styling */
+.dropdown-menu {
+    border: 1px solid #eaeaec;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+    padding: 10px 16px;
+    font-size: 14px;
+    color: #282c3f;
+    transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background: #f5f5f6;
+    color: #ff3f6c;
+}
+
+/* ===== MYNTRA PREMIUM DROPDOWN ===== */
+.myntra-dropdown-wrapper {
+    position: relative;
+}
+
+/* Toggle Button */
+.myntra-profile-toggle {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    color: #282c3f !important;
+    text-decoration: none !important;
+    padding: 0 !important;
+    transition: all 0.3s ease;
+}
+
+.myntra-profile-toggle:hover {
+    color: #ff3f6c !important;
+    transform: translateY(-2px);
+}
+
+.myntra-profile-toggle::after {
+    display: none !important;
+}
+
+/* Dropdown Menu */
+.myntra-dropdown-menu {
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12) !important;
+    padding: 0 !important;
+    min-width: 300px !important;
+    overflow: hidden;
+    margin-top: 12px !important;
+    border: 1px solid #f0f0f0 !important;
+}
+
+/* User Header */
+.myntra-user-header {
+    background: linear-gradient(135deg, #ff3f6c 0%, #ff6b35 100%);
+    padding: 24px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.myntra-user-avatar {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.myntra-user-name {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.myntra-user-email {
+    font-size: 13px;
+    opacity: 0.9;
+    font-weight: 400;
+}
+
+/* Menu Items Container */
+.myntra-menu-items {
+    padding: 8px 0;
+}
+
+/* Menu Item */
+.myntra-menu-item {
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px !important;
+    border: none !important;
+    background: transparent !important;
+    color: #282c3f !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+}
+
+.myntra-menu-item:hover {
+    background: #f8f9fa !important;
+    color: #ff3f6c !important;
+    transform: translateX(4px);
+}
+
+.myntra-menu-icon {
+    width: 36px;
+    height: 36px;
+    background: #f5f5f6;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #686b78;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.myntra-menu-item:hover .myntra-menu-icon {
+    background: #ff3f6c15;
+    color: #ff3f6c;
+}
+
+.myntra-menu-content {
+    flex: 1;
+}
+
+.myntra-menu-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.myntra-menu-sub {
+    font-size: 12px;
+    color: #686b78;
+    font-weight: 400;
+}
+
+.myntra-menu-item:hover .myntra-menu-sub {
+    color: #94969f;
+}
+
+/* Divider */
+.myntra-menu-divider {
+    height: 1px;
+    background: #f0f0f0;
+    margin: 8px 0;
+}
+
+/* Logout Item */
+.myntra-logout-item:hover {
+    background: #ffe6e6 !important;
+    color: #d32f2f !important;
+}
+
+.myntra-logout-item:hover .myntra-menu-icon {
+    background: #d32f2f15 !important;
+    color: #d32f2f !important;
+}
+
+.myntra-logout-item:hover .myntra-menu-sub {
+    color: #d32f2f !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .myntra-dropdown-menu {
+        position: fixed !important;
+        top: 70px !important;
+        left: 16px !important;
+        right: 16px !important;
+        width: auto !important;
+        max-width: none !important;
+        margin-top: 8px !important;
+    }
+}
+
+/* Profile Picture Styles */
+.myntra-user-avatar-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: white;
+}
+
+/* Default avatar when no picture */
+.myntra-user-avatar {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Also show profile pic in menu items */
+.myntra-menu-item .myntra-user-avatar-img {
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: #f5f5f6;
+}
+
+.myntra-menu-item:hover .myntra-user-avatar-img {
+    background: #ff3f6c15;
+}
