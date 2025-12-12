@@ -20,7 +20,6 @@ function Header() {
         };
         window.addEventListener("resize", onResize);
         
-        // Get products count for badge
         const products = JSON.parse(localStorage.getItem("products")) || [];
         setProductsCount(products.length);
         
