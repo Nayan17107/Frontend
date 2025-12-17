@@ -7,76 +7,76 @@ import Footer from "../Footer/Footer";
 
 export default function Home() {
     const firstSlider = [
-        { id: 1, src: "/img/Home/home-slider-1.webp" },
-        { id: 2, src: "/img/Home/home-slider-2.webp" },
-        { id: 3, src: "/img/Home/home-slider-3.webp" },
-        { id: 4, src: "/img/Home/home-slider-4.webp" },
-        { id: 5, src: "/img/Home/home-slider-5.webp" }
+        { id: 1, src: "./img/Home/home-slider-1.webp" },
+        { id: 2, src: "./img/Home/home-slider-2.webp" },
+        { id: 3, src: "./img/Home/home-slider-3.webp" },
+        { id: 4, src: "./img/Home/home-slider-4.webp" },
+        { id: 5, src: "./img/Home/home-slider-5.webp" }
     ];
 
     const secondSlider = [
         [
-            { id: 2, src: "/img/Home/home-2.webp" },
-            { id: 3, src: "/img/Home/home-3.webp" },
-            { id: 4, src: "/img/Home/home-4.webp" },
-            { id: 5, src: "/img/Home/home-5.webp" },
-            { id: 6, src: "/img/Home/home-6.webp" }
+            { id: 2, src: "./img/Home/home-2.webp" },
+            { id: 3, src: "./img/Home/home-3.webp" },
+            { id: 4, src: "./img/Home/home-4.webp" },
+            { id: 5, src: "./img/Home/home-5.webp" },
+            { id: 6, src: "./img/Home/home-6.webp" }
         ],
         [
-            { id: 7, src: "/img/Home/home-7.webp" },
-            { id: 8, src: "/img/Home/home-8.webp" },
-            { id: 9, src: "/img/Home/home-9.webp" },
-            { id: 10, src: "/img/Home/home-10.webp" },
-            { id: 11, src: "/img/Home/home-11.webp" }
+            { id: 7, src: "./img/Home/home-7.webp" },
+            { id: 8, src: "./img/Home/home-8.webp" },
+            { id: 9, src: "./img/Home/home-9.webp" },
+            { id: 10, src: "./img/Home/home-10.webp" },
+            { id: 11, src: "./img/Home/home-11.webp" }
         ]
     ];
 
     const thirdSlider = [
         [
-            { id: 2, src: "/img/Home/home-12.webp" },
-            { id: 3, src: "/img/Home/home-13.webp" },
-            { id: 4, src: "/img/Home/home-14.webp" },
-            { id: 5, src: "/img/Home/home-15.webp" },
-            { id: 6, src: "/img/Home/home-16.webp" },
-            { id: 7, src: "/img/Home/home-17.webp" }
+            { id: 2, src: "./img/Home/home-12.webp" },
+            { id: 3, src: "./img/Home/home-13.webp" },
+            { id: 4, src: "./img/Home/home-14.webp" },
+            { id: 5, src: "./img/Home/home-15.webp" },
+            { id: 6, src: "./img/Home/home-16.webp" },
+            { id: 7, src: "./img/Home/home-17.webp" }
         ]
     ];
 
     const fourthSlider = [
         [
-            { id: 2, src: "/img/Home/home-18.webp" },
-            { id: 3, src: "/img/Home/home-19.webp" },
-            { id: 4, src: "/img/Home/home-20.webp" },
-            { id: 5, src: "/img/Home/home-21.webp" },
-            { id: 6, src: "/img/Home/home-22.webp" },
-            { id: 7, src: "/img/Home/home-23.webp" }
+            { id: 2, src: "./img/Home/home-18.webp" },
+            { id: 3, src: "./img/Home/home-19.webp" },
+            { id: 4, src: "./img/Home/home-20.webp" },
+            { id: 5, src: "./img/Home/home-21.webp" },
+            { id: 6, src: "./img/Home/home-22.webp" },
+            { id: 7, src: "./img/Home/home-23.webp" }
         ],
         [
-            { id: 8, src: "/img/Home/home-24.webp" },
-            { id: 9, src: "/img/Home/home-25.webp" },
-            { id: 10, src: "/img/Home/home-26.webp" },
-            { id: 11, src: "/img/Home/home-27.webp" },
-            { id: 12, src: "/img/Home/home-29.webp" },
-            { id: 13, src: "/img/Home/home-30.webp" }
+            { id: 8, src: "./img/Home/home-24.webp" },
+            { id: 9, src: "./img/Home/home-25.webp" },
+            { id: 10, src: "./img/Home/home-26.webp" },
+            { id: 11, src: "./img/Home/home-27.webp" },
+            { id: 12, src: "./img/Home/home-29.webp" },
+            { id: 13, src: "./img/Home/home-30.webp" }
         ],
         [
-            { id: 14, src: "/img/Home/home-31.webp" },
-            { id: 15, src: "/img/Home/home-32.webp" },
-            { id: 16, src: "/img/Home/home-33.webp" },
-            { id: 17, src: "/img/Home/home-34.webp" },
-            { id: 18, src: "/img/Home/home-35.webp" },
-            { id: 19, src: "/img/Home/home-36.webp" }
+            { id: 14, src: "./img/Home/home-31.webp" },
+            { id: 15, src: "./img/Home/home-32.webp" },
+            { id: 16, src: "./img/Home/home-33.webp" },
+            { id: 17, src: "./img/Home/home-34.webp" },
+            { id: 18, src: "./img/Home/home-35.webp" },
+            { id: 19, src: "./img/Home/home-36.webp" }
         ]
     ];
 
     const fifthSlider = [
         [
-            { id: 2, src: "/img/Home/home-37.webp" },
-            { id: 3, src: "/img/Home/home-38.webp" },
-            { id: 4, src: "/img/Home/home-39.webp" },
-            { id: 5, src: "/img/Home/home-40.webp" },
-            { id: 6, src: "/img/Home/home-41.webp" },
-            { id: 7, src: "/img/Home/home-42.webp" }
+            { id: 2, src: "./img/Home/home-37.webp" },
+            { id: 3, src: "./img/Home/home-38.webp" },
+            { id: 4, src: "./img/Home/home-39.webp" },
+            { id: 5, src: "./img/Home/home-40.webp" },
+            { id: 6, src: "./img/Home/home-41.webp" },
+            { id: 7, src: "./img/Home/home-42.webp" }
         ]
     ];
 
@@ -98,7 +98,7 @@ export default function Home() {
 
                 <div className="top-banner w-full">
                     <img
-                        src="/img/Home/home-1.webp"
+                        src="./img/Home/home-1.webp"
                         alt="home-1"
                         className="hero-img"
                     />
