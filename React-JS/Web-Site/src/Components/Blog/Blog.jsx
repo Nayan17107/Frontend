@@ -3,12 +3,12 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { FaHandshake } from "react-icons/fa6";
 import { FaShoppingBag } from "react-icons/fa";
 
-import img1 from "/img/garden-6.jpg";
-import img2 from "/img/blog-3.jpg";
-import img3 from "/img/blog-2.jpg";
-import img4 from "/img/blog-4.jpg";
-import img5 from "/img/blog-5.jpg";
-import img6 from "/img/blog-6.jpg";
+import img1 from "../../../img/garden-6.jpg";
+import img2 from "../../../img/blog-3.jpg";
+import img3 from "../../../img/blog-2.jpg";
+import img4 from "../../../img/blog-4.jpg";
+import img5 from "../../../img/blog-5.jpg";
+import img6 from "../../../img/blog-6.jpg";
 
 function Blog() {
     const promos = [

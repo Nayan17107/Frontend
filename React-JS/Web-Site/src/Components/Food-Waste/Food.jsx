@@ -3,12 +3,12 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { FaStar } from "react-icons/fa";
 import "./Food.css";
 
-import img1 from "/img/Food-1.jpg";
-import img2 from "/img/Food-2.jpg";
-import img3 from "/img/Food-3.jpg";
-import img4 from "/img/Food-4.jpg";
-import img5 from "/img/Food-5.jpg";
-import img6 from "/img/Food-6.jpg";
+import img1 from "../../../img/food-1.jpg";
+import img2 from "../../../img/food-2.jpg";
+import img3 from "../../../img/food-3.jpg";
+import img4 from "../../../img/food-4.jpg";
+import img5 from "../../../img/food-5.jpg";
+import img6 from "../../../img/food-6.jpg";
 
 const FoodWasteComp = () => {
     const products = [

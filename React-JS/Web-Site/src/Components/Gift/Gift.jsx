@@ -2,15 +2,15 @@ import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { FaLeaf, FaUsers } from "react-icons/fa";
 import "./Gift.css";
-import img from "/img/gift-logo.jpg";
-import gift1 from "/img/gift-1.jpg";
-import gift2 from "/img/gift-2.jpg";
-import gift3 from "/img/gift-3.jpg";
-import gift4 from "/img/gift-4.jpg";
-import gift5 from "/img/gift-5.jpg";
-import gift6 from "/img/gift-6.jpg";
-import gift7 from "/img/gift-7.jpg";
-import gift8 from "/img/gift-8.jpg";
+import img from "../../../img/gift-logo.jpg";
+import gift1 from "../../../img/gift-1.jpg";
+import gift2 from "../../../img/gift-2.jpg";
+import gift3 from "../../../img/gift-3.jpg";
+import gift4 from "../../../img/gift-4.jpg";
+import gift5 from "../../../img/gift-5.jpg";
+import gift6 from "../../../img/gift-6.jpg";
+import gift7 from "../../../img/gift-7.jpg";
+import gift8 from "../../../img/gift-8.jpg";
 
 const products = [
     {

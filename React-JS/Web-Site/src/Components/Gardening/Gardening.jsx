@@ -4,16 +4,16 @@ import "./Gardening.css";
 
 function Gardening() {
     const categories = [
-        { id: 1, title: "Seeds & Soil", img: "/img/gardening-1.jpg" },
-        { id: 2, title: "Gardening Accessories", img: "/img/gardening-2.jpg" },
-        { id: 3, title: "All natural gardening", img: "/img/gardening-3.jpg" },
-        { id: 4, title: "Gifts for Gardeners", img: "/img/gardening-4.jpg" },
+        { id: 1, title: "Seeds & Soil", img: "../../../img/gardening-1.jpg" },
+        { id: 2, title: "Gardening Accessories", img: "../../../img/gardening-2.jpg" },
+        { id: 3, title: "All natural gardening", img: "../../../img/gardening-3.jpg" },
+        { id: 4, title: "Gifts for Gardeners", img: "../../../img/gardening-4.jpg" },
     ];
 
     const products = [
         {
             id: 6,
-            img: "/img/gardening-6.jpg",
+            img: "../../../img/gardening-6.jpg",
             title: "Wool Pots - Pack of 10",
             price: "£12.99",
             desc: "Eco-friendly wool pots perfect for seed starting and transplanting.",
@@ -21,7 +21,7 @@ function Gardening() {
         },
         {
             id: 7,
-            img: "/img/gardening-7.jpg",
+            img: "../../../img/gardening-7.jpg",
             title: "Flower Tower Vertical Floor Standing Planter",
             price: "£24.99",
             desc: "Grow stunning floral displays vertically with this space-saving planter.",
@@ -29,7 +29,7 @@ function Gardening() {
         },
         {
             id: 8,
-            img: "/img/gardening-8.jpg",
+            img: "../../../img/gardening-8.jpg",
             title: "PlantBlox Vertical Planters - Set of 10",
             price: "£219.00",
             desc: "Create a living wall with these modular PlantBlox planters.",
@@ -37,7 +37,7 @@ function Gardening() {
         },
         {
             id: 9,
-            img: "/img/gardening-9.jpg",
+            img: "../../../img/gardening-9.jpg",
             title: "Rowlinson Small Heritage Planter",
             price: "£79.99",
             desc: "Classic wooden planter for traditional garden design.",
@@ -45,7 +45,7 @@ function Gardening() {
         },
         {
             id: 10,
-            img: "/img/gardening-10.jpg",
+            img: "../../../img/gardening-10.jpg",
             title: "Rowlinson Aston Planter - 2 Pack",
             price: "£70.00",
             desc: "Get double the greenery with this durable wooden planter pair.",
@@ -103,7 +103,7 @@ function Gardening() {
 
                     <Col md={6} className="text-center">
                         <img
-                            src="/img/gardening-5.jpg"
+                            src="../../../img/gardening-5.jpg"
                             alt="Pots and Planters"
                             className="bottom-img"
                         />

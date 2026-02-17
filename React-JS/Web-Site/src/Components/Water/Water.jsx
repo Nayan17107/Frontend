@@ -1,21 +1,21 @@
 import React from "react";
 import "./Water.css";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import water6 from "/img/water-6.jpg";
+import water6 from "../../../img/water-6.jpg";
 
 function WaterPage() {
     const categories = [
-        { id: 1, title: "All Water Butts & Tanks", img: "/img/water-1.jpg" },
-        { id: 2, title: "Bestsellers", img: "/img/water-2.jpg" },
-        { id: 3, title: "Water Tanks", img: "/img/water-3.jpg" },
-        { id: 4, title: "Decorative Water Butts", img: "/img/water-4.jpg" },
-        { id: 5, title: "Accessories", img: "/img/water-5.jpg" }
+        { id: 1, title: "All Water Butts & Tanks", img: "../../../img/water-1.jpg" },
+        { id: 2, title: "Bestsellers", img: "../../../img/water-2.jpg" },
+        { id: 3, title: "Water Tanks", img: "../../../img/water-3.jpg" },
+        { id: 4, title: "Decorative Water Butts", img: "../../../img/water-4.jpg" },
+        { id: 5, title: "Accessories", img: "../../../img/water-5.jpg" }
     ];
 
     const products = [
         {
             id: 1,
-            img: "/img/water-7.jpg",
+            img: "../../../img/water-7.jpg",
             title: "Ibiza 300 litre Water Butt Kit",
             price: "£132.99",
             isNew: true,
@@ -24,7 +24,7 @@ function WaterPage() {
         },
         {
             id: 2,
-            img: "/img/water-8.jpg",
+            img: "../../../img/water-8.jpg",
             title: "FreshaTank Microbial Disc",
             price: "£19.99",
             features: ["Stops Bacteria", "Clean Water", "Easy to Use"],
@@ -32,7 +32,7 @@ function WaterPage() {
         },
         {
             id: 3,
-            img: "/img/water-9.jpg",
+            img: "../../../img/water-9.jpg",
             title: "ButtinaBox 200 Litre Water Butt Kit",
             price: "£79.99",
             oldPrice: "£99.99",
@@ -41,7 +41,7 @@ function WaterPage() {
         },
         {
             id: 4,
-            img: "/img/water-10.jpg",
+            img: "../../../img/water-10.jpg",
             title: "Strata 250 Litre Slimline Water Butt Kit",
             price: "£84.99",
             features: ["Slimline", "Strong Build", "Large Capacity"],
@@ -49,7 +49,7 @@ function WaterPage() {
         },
         {
             id: 5,
-            img: "/img/water-11.jpg",
+            img: "../../../img/water-11.jpg",
             title: "276 Litre Wall Tank",
             price: "£139.99",
             oldPrice: "£189.99",
