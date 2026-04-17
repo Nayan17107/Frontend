@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIP Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <section class="card">
+      <h1>SIP Calculator</h1>
+      <p class="subtitle">Estimate your returns for monthly investments.</p>
+
+      <form id="sipForm" novalidate>
+        <label for="monthlyInvestment">Monthly Investment (INR)</label>
+        <input id="monthlyInvestment" type="number" min="100" step="100" value="5000" required>
+
+        <label for="annualReturn">Expected Return (% p.a.)</label>
+        <input id="annualReturn" type="number" min="0" step="0.1" value="12" required>
+
+        <label for="timePeriod">Time Period (Years)</label>
+        <input id="timePeriod" type="number" min="1" step="1" value="10" required>
+
+        <div class="actions">
+          <button type="submit">Calculate</button>
+          <button type="button" id="resetBtn" class="secondary">Reset</button>
+        </div>
+      </form>
+
+      <p id="errorText" class="error" aria-live="polite"></p>
+
+      <section class="result" aria-live="polite">
+        <h2>Result</h2>
+        <div class="row">
+          <span>Invested Amount</span>
+          <strong id="investedAmount">₹0</strong>
+        </div>
+        <div class="row">
+          <span>Estimated Returns</span>
+          <strong id="estimatedReturns">₹0</strong>
+        </div>
+        <div class="row total">
+          <span>Total Value</span>
+          <strong id="totalValue">₹0</strong>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
